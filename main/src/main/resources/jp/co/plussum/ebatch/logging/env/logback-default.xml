@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<included>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <logger name="org.hibernate.SQL" level="info" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+<!--
+    <logger name="org.hibernate.type.descriptor.sql" level="info" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>-->
+
+    <!-- Application logs at trace level -->
+    <logger name="jp.co.plussum.ebatch" level="info" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+</included>

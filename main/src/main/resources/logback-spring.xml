@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+
+    <include resource="jp/co/plussum/ebatch/logging/core/config.xml"/>
+    <include resource="jp/co/plussum/ebatch/logging/core/console-appender.xml"/>
+    <include resource="jp/co/plussum/ebatch/logging/core/file-appender.xml"/>
+
+    <springProfile name="default">
+        <include resource="jp/co/plussum/ebatch/logging/env/logback-default.xml"/>
+    </springProfile>
+
+    <springProfile name="development">
+        <include resource="jp/co/plussum/ebatch/logging/env/logback-development.xml"/>
+    </springProfile>
+
+    <springProfile name="staging">
+        <include resource="jp/co/plussum/ebatch/logging/env/logback-staging.xml"/>
+    </springProfile>
+
+    <springProfile name="production">
+        <include resource="jp/co/plussum/ebatch/logging/env/logback-production.xml"/>
+    </springProfile>
+</configuration>

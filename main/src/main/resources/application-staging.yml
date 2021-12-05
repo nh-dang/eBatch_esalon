@@ -1,0 +1,20 @@
+#*******************************************************************************
+#                           Config Data source
+#******************************************************************************/
+
+spring:
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        order_inserts: true
+        jdbc:
+          batch_size: 100
+  datasource:
+    url: jdbc:postgresql://localhost:5432/salondb?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: postgres
+    password: postgresql
+    hikari:
+      data-source-properties:
+        useUnicode: true

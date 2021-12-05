@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plussum.ebatch.persistence.dao.generator.UserMstMapper">
+  <resultMap id="BaseResultMap" type="jp.co.plussum.ebatch.domain.entity.generator.UserMst">
+    <id column="usr_id" jdbcType="BIGINT" property="usrId" />
+    <result column="usr_cd" jdbcType="VARCHAR" property="usrCd" />
+    <result column="usr_password" jdbcType="VARCHAR" property="usrPassword" />
+    <result column="usr_fam_name" jdbcType="VARCHAR" property="usrFamName" />
+    <result column="usr_fst_name" jdbcType="VARCHAR" property="usrFstName" />
+    <result column="usr_fam_name_kana" jdbcType="VARCHAR" property="usrFamNameKana" />
+    <result column="usr_fst_name_kana" jdbcType="VARCHAR" property="usrFstNameKana" />
+    <result column="usr_tel_01" jdbcType="VARCHAR" property="usrTel01" />
+    <result column="usr_tel_02" jdbcType="VARCHAR" property="usrTel02" />
+    <result column="usr_tel_03" jdbcType="VARCHAR" property="usrTel03" />
+    <result column="usr_fax_01" jdbcType="VARCHAR" property="usrFax01" />
+    <result column="usr_fax_02" jdbcType="VARCHAR" property="usrFax02" />
+    <result column="usr_fax_03" jdbcType="VARCHAR" property="usrFax03" />
+    <result column="usr_pc_ml_addr" jdbcType="VARCHAR" property="usrPcMlAddr" />
+    <result column="usr_mbl_ml_addr" jdbcType="VARCHAR" property="usrMblMlAddr" />
+    <result column="usr_remarks" jdbcType="VARCHAR" property="usrRemarks" />
+    <result column="usr_avl_date_fr" jdbcType="DATE" property="usrAvlDateFr" />
+    <result column="usr_avl_date_to" jdbcType="DATE" property="usrAvlDateTo" />
+    <result column="usr_del_flg" jdbcType="CHAR" property="usrDelFlg" />
+    <result column="usr_cdate" jdbcType="DATE" property="usrCdate" />
+    <result column="usr_ctime" jdbcType="TIME" property="usrCtime" />
+    <result column="usr_ctimestamp" jdbcType="TIMESTAMP" property="usrCtimestamp" />
+    <result column="usr_udate" jdbcType="DATE" property="usrUdate" />
+    <result column="usr_utime" jdbcType="TIME" property="usrUtime" />
+    <result column="usr_utimestamp" jdbcType="TIMESTAMP" property="usrUtimestamp" />
+    <result column="version_no" jdbcType="BIGINT" property="versionNo" />
+    <result column="usr_update_user" jdbcType="BIGINT" property="usrUpdateUser" />
+    <result column="usr_update_sys_name" jdbcType="VARCHAR" property="usrUpdateSysName" />
+    <result column="usr_update_class_name" jdbcType="VARCHAR" property="usrUpdateClassName" />
+    <result column="usr_update_method_name" jdbcType="VARCHAR" property="usrUpdateMethodName" />
+    <result column="usr_update_crud_kbn" jdbcType="CHAR" property="usrUpdateCrudKbn" />
+    <result column="usr_sys_remarks" jdbcType="VARCHAR" property="usrSysRemarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    usr_id, usr_cd, usr_password, usr_fam_name, usr_fst_name, usr_fam_name_kana, usr_fst_name_kana, 
+    usr_tel_01, usr_tel_02, usr_tel_03, usr_fax_01, usr_fax_02, usr_fax_03, usr_pc_ml_addr, 
+    usr_mbl_ml_addr, usr_remarks, usr_avl_date_fr, usr_avl_date_to, usr_del_flg, usr_cdate, 
+    usr_ctime, usr_ctimestamp, usr_udate, usr_utime, usr_utimestamp, version_no, usr_update_user, 
+    usr_update_sys_name, usr_update_class_name, usr_update_method_name, usr_update_crud_kbn, 
+    usr_sys_remarks
+  </sql>
+  <select id="selectByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.UserMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_mst
+    where usr_id = #{usrId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_mst
+    where usr_id = #{usrId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.UserMstCriteria">
+    delete from user_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="jp.co.plussum.ebatch.domain.entity.generator.UserMst">
+    insert into user_mst (usr_id, usr_cd, usr_password, 
+      usr_fam_name, usr_fst_name, usr_fam_name_kana, 
+      usr_fst_name_kana, usr_tel_01, usr_tel_02, 
+      usr_tel_03, usr_fax_01, usr_fax_02, 
+      usr_fax_03, usr_pc_ml_addr, usr_mbl_ml_addr, 
+      usr_remarks, usr_avl_date_fr, usr_avl_date_to, 
+      usr_del_flg, usr_cdate, usr_ctime, 
+      usr_ctimestamp, usr_udate, usr_utime, 
+      usr_utimestamp, version_no, usr_update_user, 
+      usr_update_sys_name, usr_update_class_name, usr_update_method_name, 
+      usr_update_crud_kbn, usr_sys_remarks)
+    values (#{usrId,jdbcType=BIGINT}, #{usrCd,jdbcType=VARCHAR}, #{usrPassword,jdbcType=VARCHAR}, 
+      #{usrFamName,jdbcType=VARCHAR}, #{usrFstName,jdbcType=VARCHAR}, #{usrFamNameKana,jdbcType=VARCHAR}, 
+      #{usrFstNameKana,jdbcType=VARCHAR}, #{usrTel01,jdbcType=VARCHAR}, #{usrTel02,jdbcType=VARCHAR}, 
+      #{usrTel03,jdbcType=VARCHAR}, #{usrFax01,jdbcType=VARCHAR}, #{usrFax02,jdbcType=VARCHAR}, 
+      #{usrFax03,jdbcType=VARCHAR}, #{usrPcMlAddr,jdbcType=VARCHAR}, #{usrMblMlAddr,jdbcType=VARCHAR}, 
+      #{usrRemarks,jdbcType=VARCHAR}, #{usrAvlDateFr,jdbcType=DATE}, #{usrAvlDateTo,jdbcType=DATE}, 
+      #{usrDelFlg,jdbcType=CHAR}, #{usrCdate,jdbcType=DATE}, #{usrCtime,jdbcType=TIME}, 
+      #{usrCtimestamp,jdbcType=TIMESTAMP}, #{usrUdate,jdbcType=DATE}, #{usrUtime,jdbcType=TIME}, 
+      #{usrUtimestamp,jdbcType=TIMESTAMP}, #{versionNo,jdbcType=BIGINT}, #{usrUpdateUser,jdbcType=BIGINT}, 
+      #{usrUpdateSysName,jdbcType=VARCHAR}, #{usrUpdateClassName,jdbcType=VARCHAR}, #{usrUpdateMethodName,jdbcType=VARCHAR}, 
+      #{usrUpdateCrudKbn,jdbcType=CHAR}, #{usrSysRemarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.UserMst">
+    insert into user_mst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usrId != null">
+        usr_id,
+      </if>
+      <if test="usrCd != null">
+        usr_cd,
+      </if>
+      <if test="usrPassword != null">
+        usr_password,
+      </if>
+      <if test="usrFamName != null">
+        usr_fam_name,
+      </if>
+      <if test="usrFstName != null">
+        usr_fst_name,
+      </if>
+      <if test="usrFamNameKana != null">
+        usr_fam_name_kana,
+      </if>
+      <if test="usrFstNameKana != null">
+        usr_fst_name_kana,
+      </if>
+      <if test="usrTel01 != null">
+        usr_tel_01,
+      </if>
+      <if test="usrTel02 != null">
+        usr_tel_02,
+      </if>
+      <if test="usrTel03 != null">
+        usr_tel_03,
+      </if>
+      <if test="usrFax01 != null">
+        usr_fax_01,
+      </if>
+      <if test="usrFax02 != null">
+        usr_fax_02,
+      </if>
+      <if test="usrFax03 != null">
+        usr_fax_03,
+      </if>
+      <if test="usrPcMlAddr != null">
+        usr_pc_ml_addr,
+      </if>
+      <if test="usrMblMlAddr != null">
+        usr_mbl_ml_addr,
+      </if>
+      <if test="usrRemarks != null">
+        usr_remarks,
+      </if>
+      <if test="usrAvlDateFr != null">
+        usr_avl_date_fr,
+      </if>
+      <if test="usrAvlDateTo != null">
+        usr_avl_date_to,
+      </if>
+      <if test="usrDelFlg != null">
+        usr_del_flg,
+      </if>
+      <if test="usrCdate != null">
+        usr_cdate,
+      </if>
+      <if test="usrCtime != null">
+        usr_ctime,
+      </if>
+      <if test="usrCtimestamp != null">
+        usr_ctimestamp,
+      </if>
+      <if test="usrUdate != null">
+        usr_udate,
+      </if>
+      <if test="usrUtime != null">
+        usr_utime,
+      </if>
+      <if test="usrUtimestamp != null">
+        usr_utimestamp,
+      </if>
+      <if test="versionNo != null">
+        version_no,
+      </if>
+      <if test="usrUpdateUser != null">
+        usr_update_user,
+      </if>
+      <if test="usrUpdateSysName != null">
+        usr_update_sys_name,
+      </if>
+      <if test="usrUpdateClassName != null">
+        usr_update_class_name,
+      </if>
+      <if test="usrUpdateMethodName != null">
+        usr_update_method_name,
+      </if>
+      <if test="usrUpdateCrudKbn != null">
+        usr_update_crud_kbn,
+      </if>
+      <if test="usrSysRemarks != null">
+        usr_sys_remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usrId != null">
+        #{usrId,jdbcType=BIGINT},
+      </if>
+      <if test="usrCd != null">
+        #{usrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="usrPassword != null">
+        #{usrPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFamName != null">
+        #{usrFamName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFstName != null">
+        #{usrFstName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFamNameKana != null">
+        #{usrFamNameKana,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFstNameKana != null">
+        #{usrFstNameKana,jdbcType=VARCHAR},
+      </if>
+      <if test="usrTel01 != null">
+        #{usrTel01,jdbcType=VARCHAR},
+      </if>
+      <if test="usrTel02 != null">
+        #{usrTel02,jdbcType=VARCHAR},
+      </if>
+      <if test="usrTel03 != null">
+        #{usrTel03,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFax01 != null">
+        #{usrFax01,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFax02 != null">
+        #{usrFax02,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFax03 != null">
+        #{usrFax03,jdbcType=VARCHAR},
+      </if>
+      <if test="usrPcMlAddr != null">
+        #{usrPcMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="usrMblMlAddr != null">
+        #{usrMblMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="usrRemarks != null">
+        #{usrRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="usrAvlDateFr != null">
+        #{usrAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="usrAvlDateTo != null">
+        #{usrAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="usrDelFlg != null">
+        #{usrDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="usrCdate != null">
+        #{usrCdate,jdbcType=DATE},
+      </if>
+      <if test="usrCtime != null">
+        #{usrCtime,jdbcType=TIME},
+      </if>
+      <if test="usrCtimestamp != null">
+        #{usrCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usrUdate != null">
+        #{usrUdate,jdbcType=DATE},
+      </if>
+      <if test="usrUtime != null">
+        #{usrUtime,jdbcType=TIME},
+      </if>
+      <if test="usrUtimestamp != null">
+        #{usrUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="usrUpdateUser != null">
+        #{usrUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="usrUpdateSysName != null">
+        #{usrUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrUpdateClassName != null">
+        #{usrUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrUpdateMethodName != null">
+        #{usrUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrUpdateCrudKbn != null">
+        #{usrUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="usrSysRemarks != null">
+        #{usrSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.UserMstCriteria" resultType="java.lang.Long">
+    select count(*) from user_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user_mst
+    <set>
+      <if test="record.usrId != null">
+        usr_id = #{record.usrId,jdbcType=BIGINT},
+      </if>
+      <if test="record.usrCd != null">
+        usr_cd = #{record.usrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrPassword != null">
+        usr_password = #{record.usrPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrFamName != null">
+        usr_fam_name = #{record.usrFamName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrFstName != null">
+        usr_fst_name = #{record.usrFstName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrFamNameKana != null">
+        usr_fam_name_kana = #{record.usrFamNameKana,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrFstNameKana != null">
+        usr_fst_name_kana = #{record.usrFstNameKana,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrTel01 != null">
+        usr_tel_01 = #{record.usrTel01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrTel02 != null">
+        usr_tel_02 = #{record.usrTel02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrTel03 != null">
+        usr_tel_03 = #{record.usrTel03,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrFax01 != null">
+        usr_fax_01 = #{record.usrFax01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrFax02 != null">
+        usr_fax_02 = #{record.usrFax02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrFax03 != null">
+        usr_fax_03 = #{record.usrFax03,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrPcMlAddr != null">
+        usr_pc_ml_addr = #{record.usrPcMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrMblMlAddr != null">
+        usr_mbl_ml_addr = #{record.usrMblMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrRemarks != null">
+        usr_remarks = #{record.usrRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrAvlDateFr != null">
+        usr_avl_date_fr = #{record.usrAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="record.usrAvlDateTo != null">
+        usr_avl_date_to = #{record.usrAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="record.usrDelFlg != null">
+        usr_del_flg = #{record.usrDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="record.usrCdate != null">
+        usr_cdate = #{record.usrCdate,jdbcType=DATE},
+      </if>
+      <if test="record.usrCtime != null">
+        usr_ctime = #{record.usrCtime,jdbcType=TIME},
+      </if>
+      <if test="record.usrCtimestamp != null">
+        usr_ctimestamp = #{record.usrCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usrUdate != null">
+        usr_udate = #{record.usrUdate,jdbcType=DATE},
+      </if>
+      <if test="record.usrUtime != null">
+        usr_utime = #{record.usrUtime,jdbcType=TIME},
+      </if>
+      <if test="record.usrUtimestamp != null">
+        usr_utimestamp = #{record.usrUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.versionNo != null">
+        version_no = #{record.versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="record.usrUpdateUser != null">
+        usr_update_user = #{record.usrUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.usrUpdateSysName != null">
+        usr_update_sys_name = #{record.usrUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrUpdateClassName != null">
+        usr_update_class_name = #{record.usrUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrUpdateMethodName != null">
+        usr_update_method_name = #{record.usrUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usrUpdateCrudKbn != null">
+        usr_update_crud_kbn = #{record.usrUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="record.usrSysRemarks != null">
+        usr_sys_remarks = #{record.usrSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user_mst
+    set usr_id = #{record.usrId,jdbcType=BIGINT},
+      usr_cd = #{record.usrCd,jdbcType=VARCHAR},
+      usr_password = #{record.usrPassword,jdbcType=VARCHAR},
+      usr_fam_name = #{record.usrFamName,jdbcType=VARCHAR},
+      usr_fst_name = #{record.usrFstName,jdbcType=VARCHAR},
+      usr_fam_name_kana = #{record.usrFamNameKana,jdbcType=VARCHAR},
+      usr_fst_name_kana = #{record.usrFstNameKana,jdbcType=VARCHAR},
+      usr_tel_01 = #{record.usrTel01,jdbcType=VARCHAR},
+      usr_tel_02 = #{record.usrTel02,jdbcType=VARCHAR},
+      usr_tel_03 = #{record.usrTel03,jdbcType=VARCHAR},
+      usr_fax_01 = #{record.usrFax01,jdbcType=VARCHAR},
+      usr_fax_02 = #{record.usrFax02,jdbcType=VARCHAR},
+      usr_fax_03 = #{record.usrFax03,jdbcType=VARCHAR},
+      usr_pc_ml_addr = #{record.usrPcMlAddr,jdbcType=VARCHAR},
+      usr_mbl_ml_addr = #{record.usrMblMlAddr,jdbcType=VARCHAR},
+      usr_remarks = #{record.usrRemarks,jdbcType=VARCHAR},
+      usr_avl_date_fr = #{record.usrAvlDateFr,jdbcType=DATE},
+      usr_avl_date_to = #{record.usrAvlDateTo,jdbcType=DATE},
+      usr_del_flg = #{record.usrDelFlg,jdbcType=CHAR},
+      usr_cdate = #{record.usrCdate,jdbcType=DATE},
+      usr_ctime = #{record.usrCtime,jdbcType=TIME},
+      usr_ctimestamp = #{record.usrCtimestamp,jdbcType=TIMESTAMP},
+      usr_udate = #{record.usrUdate,jdbcType=DATE},
+      usr_utime = #{record.usrUtime,jdbcType=TIME},
+      usr_utimestamp = #{record.usrUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{record.versionNo,jdbcType=BIGINT},
+      usr_update_user = #{record.usrUpdateUser,jdbcType=BIGINT},
+      usr_update_sys_name = #{record.usrUpdateSysName,jdbcType=VARCHAR},
+      usr_update_class_name = #{record.usrUpdateClassName,jdbcType=VARCHAR},
+      usr_update_method_name = #{record.usrUpdateMethodName,jdbcType=VARCHAR},
+      usr_update_crud_kbn = #{record.usrUpdateCrudKbn,jdbcType=CHAR},
+      usr_sys_remarks = #{record.usrSysRemarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.UserMst">
+    update user_mst
+    <set>
+      <if test="usrCd != null">
+        usr_cd = #{usrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="usrPassword != null">
+        usr_password = #{usrPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFamName != null">
+        usr_fam_name = #{usrFamName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFstName != null">
+        usr_fst_name = #{usrFstName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFamNameKana != null">
+        usr_fam_name_kana = #{usrFamNameKana,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFstNameKana != null">
+        usr_fst_name_kana = #{usrFstNameKana,jdbcType=VARCHAR},
+      </if>
+      <if test="usrTel01 != null">
+        usr_tel_01 = #{usrTel01,jdbcType=VARCHAR},
+      </if>
+      <if test="usrTel02 != null">
+        usr_tel_02 = #{usrTel02,jdbcType=VARCHAR},
+      </if>
+      <if test="usrTel03 != null">
+        usr_tel_03 = #{usrTel03,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFax01 != null">
+        usr_fax_01 = #{usrFax01,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFax02 != null">
+        usr_fax_02 = #{usrFax02,jdbcType=VARCHAR},
+      </if>
+      <if test="usrFax03 != null">
+        usr_fax_03 = #{usrFax03,jdbcType=VARCHAR},
+      </if>
+      <if test="usrPcMlAddr != null">
+        usr_pc_ml_addr = #{usrPcMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="usrMblMlAddr != null">
+        usr_mbl_ml_addr = #{usrMblMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="usrRemarks != null">
+        usr_remarks = #{usrRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="usrAvlDateFr != null">
+        usr_avl_date_fr = #{usrAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="usrAvlDateTo != null">
+        usr_avl_date_to = #{usrAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="usrDelFlg != null">
+        usr_del_flg = #{usrDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="usrCdate != null">
+        usr_cdate = #{usrCdate,jdbcType=DATE},
+      </if>
+      <if test="usrCtime != null">
+        usr_ctime = #{usrCtime,jdbcType=TIME},
+      </if>
+      <if test="usrCtimestamp != null">
+        usr_ctimestamp = #{usrCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usrUdate != null">
+        usr_udate = #{usrUdate,jdbcType=DATE},
+      </if>
+      <if test="usrUtime != null">
+        usr_utime = #{usrUtime,jdbcType=TIME},
+      </if>
+      <if test="usrUtimestamp != null">
+        usr_utimestamp = #{usrUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        version_no = #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="usrUpdateUser != null">
+        usr_update_user = #{usrUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="usrUpdateSysName != null">
+        usr_update_sys_name = #{usrUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrUpdateClassName != null">
+        usr_update_class_name = #{usrUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrUpdateMethodName != null">
+        usr_update_method_name = #{usrUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="usrUpdateCrudKbn != null">
+        usr_update_crud_kbn = #{usrUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="usrSysRemarks != null">
+        usr_sys_remarks = #{usrSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where usr_id = #{usrId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jp.co.plussum.ebatch.domain.entity.generator.UserMst">
+    update user_mst
+    set usr_cd = #{usrCd,jdbcType=VARCHAR},
+      usr_password = #{usrPassword,jdbcType=VARCHAR},
+      usr_fam_name = #{usrFamName,jdbcType=VARCHAR},
+      usr_fst_name = #{usrFstName,jdbcType=VARCHAR},
+      usr_fam_name_kana = #{usrFamNameKana,jdbcType=VARCHAR},
+      usr_fst_name_kana = #{usrFstNameKana,jdbcType=VARCHAR},
+      usr_tel_01 = #{usrTel01,jdbcType=VARCHAR},
+      usr_tel_02 = #{usrTel02,jdbcType=VARCHAR},
+      usr_tel_03 = #{usrTel03,jdbcType=VARCHAR},
+      usr_fax_01 = #{usrFax01,jdbcType=VARCHAR},
+      usr_fax_02 = #{usrFax02,jdbcType=VARCHAR},
+      usr_fax_03 = #{usrFax03,jdbcType=VARCHAR},
+      usr_pc_ml_addr = #{usrPcMlAddr,jdbcType=VARCHAR},
+      usr_mbl_ml_addr = #{usrMblMlAddr,jdbcType=VARCHAR},
+      usr_remarks = #{usrRemarks,jdbcType=VARCHAR},
+      usr_avl_date_fr = #{usrAvlDateFr,jdbcType=DATE},
+      usr_avl_date_to = #{usrAvlDateTo,jdbcType=DATE},
+      usr_del_flg = #{usrDelFlg,jdbcType=CHAR},
+      usr_cdate = #{usrCdate,jdbcType=DATE},
+      usr_ctime = #{usrCtime,jdbcType=TIME},
+      usr_ctimestamp = #{usrCtimestamp,jdbcType=TIMESTAMP},
+      usr_udate = #{usrUdate,jdbcType=DATE},
+      usr_utime = #{usrUtime,jdbcType=TIME},
+      usr_utimestamp = #{usrUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{versionNo,jdbcType=BIGINT},
+      usr_update_user = #{usrUpdateUser,jdbcType=BIGINT},
+      usr_update_sys_name = #{usrUpdateSysName,jdbcType=VARCHAR},
+      usr_update_class_name = #{usrUpdateClassName,jdbcType=VARCHAR},
+      usr_update_method_name = #{usrUpdateMethodName,jdbcType=VARCHAR},
+      usr_update_crud_kbn = #{usrUpdateCrudKbn,jdbcType=CHAR},
+      usr_sys_remarks = #{usrSysRemarks,jdbcType=VARCHAR}
+    where usr_id = #{usrId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.UserMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectOneByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.UserMstCriteria" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>
