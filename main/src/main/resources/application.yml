@@ -24,6 +24,5 @@ spring:
   #******************************************************************************/
 service:
   google:
-    api-key: AIzaSyAObmZ9FPyANycj7fN1wZkLLMRBdf-YtMo
-    project-id: energy-data-platform
-    client-id: 11576547900-g6fm3guhgigvk6q6m51g2jili33qmeut.apps.googleusercontent.com
+    drive-api:
+      credentials: classpath:google_credentials/local/gdriverdemo-334116-bb495c8c218f.json

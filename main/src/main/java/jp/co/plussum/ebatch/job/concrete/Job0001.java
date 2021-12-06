@@ -1,7 +1,7 @@
 package jp.co.plussum.ebatch.job.concrete;
 
+import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.FileList;
-import jp.co.plussum.ebatch.config.Google;
 import jp.co.plussum.ebatch.dto.job0001.Job0001Request;
 import jp.co.plussum.ebatch.job.DefaultAbstractJobRunner;
 import jp.co.plussum.ebatch.job.core.ClientRequest;
@@ -21,7 +21,7 @@ public class Job0001 extends DefaultAbstractJobRunner<Job0001Request> {
     private static final String DOWNLOAD_MODE = "download_mode";
 
     @Autowired
-    private Google googleDrive;
+    private Drive googleConfigDrive;
 
     @Override
     public Class<?> getClassType() {
@@ -43,12 +43,12 @@ public class Job0001 extends DefaultAbstractJobRunner<Job0001Request> {
     @Override
     public void perform(Job0001Request request) throws Exception {
 
-        FileList listFile = googleDrive.getService().files().list()
+        FileList listFile = googleConfigDrive.files().list()
                 .setPageSize(1000)
                 .setFields("nextPageToken, files(id, name, size, thumbnailLink, shared)") // get field of google drive file
                 .execute();
 
-        String result = "Number of downloaded file: " + request.getDownload();
+        String result = "Number of downloaded file: " + listFile.size();
 
         this.result.setResponse(result);
     }
