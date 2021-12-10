@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plussum.ebatch.persistence.dao.generator.ShopMstMapper">
+  <resultMap id="BaseResultMap" type="jp.co.plussum.ebatch.domain.entity.generator.ShopMst">
+    <id column="shp_id" jdbcType="BIGINT" property="shpId" />
+    <result column="shp_cd" jdbcType="VARCHAR" property="shpCd" />
+    <result column="shp_pass" jdbcType="VARCHAR" property="shpPass" />
+    <result column="shp_hdr_com_id" jdbcType="BIGINT" property="shpHdrComId" />
+    <result column="shp_ope_com_id" jdbcType="BIGINT" property="shpOpeComId" />
+    <result column="shp_grp_id" jdbcType="BIGINT" property="shpGrpId" />
+    <result column="shp_name" jdbcType="VARCHAR" property="shpName" />
+    <result column="shp_name_kn" jdbcType="VARCHAR" property="shpNameKn" />
+    <result column="shp_zip_cd" jdbcType="CHAR" property="shpZipCd" />
+    <result column="shp_addr01" jdbcType="VARCHAR" property="shpAddr01" />
+    <result column="shp_addr02" jdbcType="VARCHAR" property="shpAddr02" />
+    <result column="shp_addr03" jdbcType="VARCHAR" property="shpAddr03" />
+    <result column="shp_addr04" jdbcType="VARCHAR" property="shpAddr04" />
+    <result column="shp_tel_01" jdbcType="VARCHAR" property="shpTel01" />
+    <result column="shp_tel_02" jdbcType="VARCHAR" property="shpTel02" />
+    <result column="shp_tel_03" jdbcType="VARCHAR" property="shpTel03" />
+    <result column="shp_fax_01" jdbcType="VARCHAR" property="shpFax01" />
+    <result column="shp_fax_02" jdbcType="VARCHAR" property="shpFax02" />
+    <result column="shp_fax_03" jdbcType="VARCHAR" property="shpFax03" />
+    <result column="shp_remarks" jdbcType="VARCHAR" property="shpRemarks" />
+    <result column="shp_avl_date_fr" jdbcType="DATE" property="shpAvlDateFr" />
+    <result column="shp_avl_date_to" jdbcType="DATE" property="shpAvlDateTo" />
+    <result column="shp_del_flg" jdbcType="CHAR" property="shpDelFlg" />
+    <result column="shp_cdate" jdbcType="DATE" property="shpCdate" />
+    <result column="shp_ctime" jdbcType="TIME" property="shpCtime" />
+    <result column="shp_ctimestamp" jdbcType="TIMESTAMP" property="shpCtimestamp" />
+    <result column="shp_udate" jdbcType="DATE" property="shpUdate" />
+    <result column="shp_utime" jdbcType="TIME" property="shpUtime" />
+    <result column="shp_utimestamp" jdbcType="TIMESTAMP" property="shpUtimestamp" />
+    <result column="version_no" jdbcType="BIGINT" property="versionNo" />
+    <result column="shp_update_user" jdbcType="BIGINT" property="shpUpdateUser" />
+    <result column="shp_update_sys_name" jdbcType="VARCHAR" property="shpUpdateSysName" />
+    <result column="shp_update_class_name" jdbcType="VARCHAR" property="shpUpdateClassName" />
+    <result column="shp_update_method_name" jdbcType="VARCHAR" property="shpUpdateMethodName" />
+    <result column="shp_update_crud_kbn" jdbcType="CHAR" property="shpUpdateCrudKbn" />
+    <result column="shp_sys_remarks" jdbcType="VARCHAR" property="shpSysRemarks" />
+    <result column="shp_prf_cd" jdbcType="CHAR" property="shpPrfCd" />
+    <result column="shp_pc_ml_addr" jdbcType="VARCHAR" property="shpPcMlAddr" />
+    <result column="shp_mbl_ml_addr" jdbcType="VARCHAR" property="shpMblMlAddr" />
+    <result column="shp_update_admin" jdbcType="BIGINT" property="shpUpdateAdmin" />
+    <result column="shp_rpt_ml_addr" jdbcType="VARCHAR" property="shpRptMlAddr" />
+    <result column="shp_install_date" jdbcType="DATE" property="shpInstallDate" />
+    <result column="shp_com_no" jdbcType="VARCHAR" property="shpComNo" />
+    <result column="shp_com_name" jdbcType="VARCHAR" property="shpComName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    shp_id, shp_cd, shp_pass, shp_hdr_com_id, shp_ope_com_id, shp_grp_id, shp_name, shp_name_kn, 
+    shp_zip_cd, shp_addr01, shp_addr02, shp_addr03, shp_addr04, shp_tel_01, shp_tel_02, 
+    shp_tel_03, shp_fax_01, shp_fax_02, shp_fax_03, shp_remarks, shp_avl_date_fr, shp_avl_date_to, 
+    shp_del_flg, shp_cdate, shp_ctime, shp_ctimestamp, shp_udate, shp_utime, shp_utimestamp, 
+    version_no, shp_update_user, shp_update_sys_name, shp_update_class_name, shp_update_method_name, 
+    shp_update_crud_kbn, shp_sys_remarks, shp_prf_cd, shp_pc_ml_addr, shp_mbl_ml_addr, 
+    shp_update_admin, shp_rpt_ml_addr, shp_install_date, shp_com_no, shp_com_name
+  </sql>
+  <select id="selectByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ShopMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shop_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop_mst
+    where shp_id = #{shpId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from shop_mst
+    where shp_id = #{shpId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ShopMstCriteria">
+    delete from shop_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ShopMst">
+    insert into shop_mst (shp_id, shp_cd, shp_pass, 
+      shp_hdr_com_id, shp_ope_com_id, shp_grp_id, 
+      shp_name, shp_name_kn, shp_zip_cd, 
+      shp_addr01, shp_addr02, shp_addr03, 
+      shp_addr04, shp_tel_01, shp_tel_02, 
+      shp_tel_03, shp_fax_01, shp_fax_02, 
+      shp_fax_03, shp_remarks, shp_avl_date_fr, 
+      shp_avl_date_to, shp_del_flg, shp_cdate, 
+      shp_ctime, shp_ctimestamp, shp_udate, 
+      shp_utime, shp_utimestamp, version_no, 
+      shp_update_user, shp_update_sys_name, shp_update_class_name, 
+      shp_update_method_name, shp_update_crud_kbn, shp_sys_remarks, 
+      shp_prf_cd, shp_pc_ml_addr, shp_mbl_ml_addr, 
+      shp_update_admin, shp_rpt_ml_addr, shp_install_date, 
+      shp_com_no, shp_com_name)
+    values (#{shpId,jdbcType=BIGINT}, #{shpCd,jdbcType=VARCHAR}, #{shpPass,jdbcType=VARCHAR}, 
+      #{shpHdrComId,jdbcType=BIGINT}, #{shpOpeComId,jdbcType=BIGINT}, #{shpGrpId,jdbcType=BIGINT}, 
+      #{shpName,jdbcType=VARCHAR}, #{shpNameKn,jdbcType=VARCHAR}, #{shpZipCd,jdbcType=CHAR}, 
+      #{shpAddr01,jdbcType=VARCHAR}, #{shpAddr02,jdbcType=VARCHAR}, #{shpAddr03,jdbcType=VARCHAR}, 
+      #{shpAddr04,jdbcType=VARCHAR}, #{shpTel01,jdbcType=VARCHAR}, #{shpTel02,jdbcType=VARCHAR}, 
+      #{shpTel03,jdbcType=VARCHAR}, #{shpFax01,jdbcType=VARCHAR}, #{shpFax02,jdbcType=VARCHAR}, 
+      #{shpFax03,jdbcType=VARCHAR}, #{shpRemarks,jdbcType=VARCHAR}, #{shpAvlDateFr,jdbcType=DATE}, 
+      #{shpAvlDateTo,jdbcType=DATE}, #{shpDelFlg,jdbcType=CHAR}, #{shpCdate,jdbcType=DATE}, 
+      #{shpCtime,jdbcType=TIME}, #{shpCtimestamp,jdbcType=TIMESTAMP}, #{shpUdate,jdbcType=DATE}, 
+      #{shpUtime,jdbcType=TIME}, #{shpUtimestamp,jdbcType=TIMESTAMP}, #{versionNo,jdbcType=BIGINT}, 
+      #{shpUpdateUser,jdbcType=BIGINT}, #{shpUpdateSysName,jdbcType=VARCHAR}, #{shpUpdateClassName,jdbcType=VARCHAR}, 
+      #{shpUpdateMethodName,jdbcType=VARCHAR}, #{shpUpdateCrudKbn,jdbcType=CHAR}, #{shpSysRemarks,jdbcType=VARCHAR}, 
+      #{shpPrfCd,jdbcType=CHAR}, #{shpPcMlAddr,jdbcType=VARCHAR}, #{shpMblMlAddr,jdbcType=VARCHAR}, 
+      #{shpUpdateAdmin,jdbcType=BIGINT}, #{shpRptMlAddr,jdbcType=VARCHAR}, #{shpInstallDate,jdbcType=DATE}, 
+      #{shpComNo,jdbcType=VARCHAR}, #{shpComName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ShopMst">
+    insert into shop_mst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shpId != null">
+        shp_id,
+      </if>
+      <if test="shpCd != null">
+        shp_cd,
+      </if>
+      <if test="shpPass != null">
+        shp_pass,
+      </if>
+      <if test="shpHdrComId != null">
+        shp_hdr_com_id,
+      </if>
+      <if test="shpOpeComId != null">
+        shp_ope_com_id,
+      </if>
+      <if test="shpGrpId != null">
+        shp_grp_id,
+      </if>
+      <if test="shpName != null">
+        shp_name,
+      </if>
+      <if test="shpNameKn != null">
+        shp_name_kn,
+      </if>
+      <if test="shpZipCd != null">
+        shp_zip_cd,
+      </if>
+      <if test="shpAddr01 != null">
+        shp_addr01,
+      </if>
+      <if test="shpAddr02 != null">
+        shp_addr02,
+      </if>
+      <if test="shpAddr03 != null">
+        shp_addr03,
+      </if>
+      <if test="shpAddr04 != null">
+        shp_addr04,
+      </if>
+      <if test="shpTel01 != null">
+        shp_tel_01,
+      </if>
+      <if test="shpTel02 != null">
+        shp_tel_02,
+      </if>
+      <if test="shpTel03 != null">
+        shp_tel_03,
+      </if>
+      <if test="shpFax01 != null">
+        shp_fax_01,
+      </if>
+      <if test="shpFax02 != null">
+        shp_fax_02,
+      </if>
+      <if test="shpFax03 != null">
+        shp_fax_03,
+      </if>
+      <if test="shpRemarks != null">
+        shp_remarks,
+      </if>
+      <if test="shpAvlDateFr != null">
+        shp_avl_date_fr,
+      </if>
+      <if test="shpAvlDateTo != null">
+        shp_avl_date_to,
+      </if>
+      <if test="shpDelFlg != null">
+        shp_del_flg,
+      </if>
+      <if test="shpCdate != null">
+        shp_cdate,
+      </if>
+      <if test="shpCtime != null">
+        shp_ctime,
+      </if>
+      <if test="shpCtimestamp != null">
+        shp_ctimestamp,
+      </if>
+      <if test="shpUdate != null">
+        shp_udate,
+      </if>
+      <if test="shpUtime != null">
+        shp_utime,
+      </if>
+      <if test="shpUtimestamp != null">
+        shp_utimestamp,
+      </if>
+      <if test="versionNo != null">
+        version_no,
+      </if>
+      <if test="shpUpdateUser != null">
+        shp_update_user,
+      </if>
+      <if test="shpUpdateSysName != null">
+        shp_update_sys_name,
+      </if>
+      <if test="shpUpdateClassName != null">
+        shp_update_class_name,
+      </if>
+      <if test="shpUpdateMethodName != null">
+        shp_update_method_name,
+      </if>
+      <if test="shpUpdateCrudKbn != null">
+        shp_update_crud_kbn,
+      </if>
+      <if test="shpSysRemarks != null">
+        shp_sys_remarks,
+      </if>
+      <if test="shpPrfCd != null">
+        shp_prf_cd,
+      </if>
+      <if test="shpPcMlAddr != null">
+        shp_pc_ml_addr,
+      </if>
+      <if test="shpMblMlAddr != null">
+        shp_mbl_ml_addr,
+      </if>
+      <if test="shpUpdateAdmin != null">
+        shp_update_admin,
+      </if>
+      <if test="shpRptMlAddr != null">
+        shp_rpt_ml_addr,
+      </if>
+      <if test="shpInstallDate != null">
+        shp_install_date,
+      </if>
+      <if test="shpComNo != null">
+        shp_com_no,
+      </if>
+      <if test="shpComName != null">
+        shp_com_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shpId != null">
+        #{shpId,jdbcType=BIGINT},
+      </if>
+      <if test="shpCd != null">
+        #{shpCd,jdbcType=VARCHAR},
+      </if>
+      <if test="shpPass != null">
+        #{shpPass,jdbcType=VARCHAR},
+      </if>
+      <if test="shpHdrComId != null">
+        #{shpHdrComId,jdbcType=BIGINT},
+      </if>
+      <if test="shpOpeComId != null">
+        #{shpOpeComId,jdbcType=BIGINT},
+      </if>
+      <if test="shpGrpId != null">
+        #{shpGrpId,jdbcType=BIGINT},
+      </if>
+      <if test="shpName != null">
+        #{shpName,jdbcType=VARCHAR},
+      </if>
+      <if test="shpNameKn != null">
+        #{shpNameKn,jdbcType=VARCHAR},
+      </if>
+      <if test="shpZipCd != null">
+        #{shpZipCd,jdbcType=CHAR},
+      </if>
+      <if test="shpAddr01 != null">
+        #{shpAddr01,jdbcType=VARCHAR},
+      </if>
+      <if test="shpAddr02 != null">
+        #{shpAddr02,jdbcType=VARCHAR},
+      </if>
+      <if test="shpAddr03 != null">
+        #{shpAddr03,jdbcType=VARCHAR},
+      </if>
+      <if test="shpAddr04 != null">
+        #{shpAddr04,jdbcType=VARCHAR},
+      </if>
+      <if test="shpTel01 != null">
+        #{shpTel01,jdbcType=VARCHAR},
+      </if>
+      <if test="shpTel02 != null">
+        #{shpTel02,jdbcType=VARCHAR},
+      </if>
+      <if test="shpTel03 != null">
+        #{shpTel03,jdbcType=VARCHAR},
+      </if>
+      <if test="shpFax01 != null">
+        #{shpFax01,jdbcType=VARCHAR},
+      </if>
+      <if test="shpFax02 != null">
+        #{shpFax02,jdbcType=VARCHAR},
+      </if>
+      <if test="shpFax03 != null">
+        #{shpFax03,jdbcType=VARCHAR},
+      </if>
+      <if test="shpRemarks != null">
+        #{shpRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="shpAvlDateFr != null">
+        #{shpAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="shpAvlDateTo != null">
+        #{shpAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="shpDelFlg != null">
+        #{shpDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="shpCdate != null">
+        #{shpCdate,jdbcType=DATE},
+      </if>
+      <if test="shpCtime != null">
+        #{shpCtime,jdbcType=TIME},
+      </if>
+      <if test="shpCtimestamp != null">
+        #{shpCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shpUdate != null">
+        #{shpUdate,jdbcType=DATE},
+      </if>
+      <if test="shpUtime != null">
+        #{shpUtime,jdbcType=TIME},
+      </if>
+      <if test="shpUtimestamp != null">
+        #{shpUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="shpUpdateUser != null">
+        #{shpUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="shpUpdateSysName != null">
+        #{shpUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="shpUpdateClassName != null">
+        #{shpUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="shpUpdateMethodName != null">
+        #{shpUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="shpUpdateCrudKbn != null">
+        #{shpUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="shpSysRemarks != null">
+        #{shpSysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="shpPrfCd != null">
+        #{shpPrfCd,jdbcType=CHAR},
+      </if>
+      <if test="shpPcMlAddr != null">
+        #{shpPcMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="shpMblMlAddr != null">
+        #{shpMblMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="shpUpdateAdmin != null">
+        #{shpUpdateAdmin,jdbcType=BIGINT},
+      </if>
+      <if test="shpRptMlAddr != null">
+        #{shpRptMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="shpInstallDate != null">
+        #{shpInstallDate,jdbcType=DATE},
+      </if>
+      <if test="shpComNo != null">
+        #{shpComNo,jdbcType=VARCHAR},
+      </if>
+      <if test="shpComName != null">
+        #{shpComName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ShopMstCriteria" resultType="java.lang.Long">
+    select count(*) from shop_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update shop_mst
+    <set>
+      <if test="record.shpId != null">
+        shp_id = #{record.shpId,jdbcType=BIGINT},
+      </if>
+      <if test="record.shpCd != null">
+        shp_cd = #{record.shpCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpPass != null">
+        shp_pass = #{record.shpPass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpHdrComId != null">
+        shp_hdr_com_id = #{record.shpHdrComId,jdbcType=BIGINT},
+      </if>
+      <if test="record.shpOpeComId != null">
+        shp_ope_com_id = #{record.shpOpeComId,jdbcType=BIGINT},
+      </if>
+      <if test="record.shpGrpId != null">
+        shp_grp_id = #{record.shpGrpId,jdbcType=BIGINT},
+      </if>
+      <if test="record.shpName != null">
+        shp_name = #{record.shpName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpNameKn != null">
+        shp_name_kn = #{record.shpNameKn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpZipCd != null">
+        shp_zip_cd = #{record.shpZipCd,jdbcType=CHAR},
+      </if>
+      <if test="record.shpAddr01 != null">
+        shp_addr01 = #{record.shpAddr01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpAddr02 != null">
+        shp_addr02 = #{record.shpAddr02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpAddr03 != null">
+        shp_addr03 = #{record.shpAddr03,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpAddr04 != null">
+        shp_addr04 = #{record.shpAddr04,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpTel01 != null">
+        shp_tel_01 = #{record.shpTel01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpTel02 != null">
+        shp_tel_02 = #{record.shpTel02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpTel03 != null">
+        shp_tel_03 = #{record.shpTel03,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpFax01 != null">
+        shp_fax_01 = #{record.shpFax01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpFax02 != null">
+        shp_fax_02 = #{record.shpFax02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpFax03 != null">
+        shp_fax_03 = #{record.shpFax03,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpRemarks != null">
+        shp_remarks = #{record.shpRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpAvlDateFr != null">
+        shp_avl_date_fr = #{record.shpAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="record.shpAvlDateTo != null">
+        shp_avl_date_to = #{record.shpAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="record.shpDelFlg != null">
+        shp_del_flg = #{record.shpDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="record.shpCdate != null">
+        shp_cdate = #{record.shpCdate,jdbcType=DATE},
+      </if>
+      <if test="record.shpCtime != null">
+        shp_ctime = #{record.shpCtime,jdbcType=TIME},
+      </if>
+      <if test="record.shpCtimestamp != null">
+        shp_ctimestamp = #{record.shpCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.shpUdate != null">
+        shp_udate = #{record.shpUdate,jdbcType=DATE},
+      </if>
+      <if test="record.shpUtime != null">
+        shp_utime = #{record.shpUtime,jdbcType=TIME},
+      </if>
+      <if test="record.shpUtimestamp != null">
+        shp_utimestamp = #{record.shpUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.versionNo != null">
+        version_no = #{record.versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="record.shpUpdateUser != null">
+        shp_update_user = #{record.shpUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.shpUpdateSysName != null">
+        shp_update_sys_name = #{record.shpUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpUpdateClassName != null">
+        shp_update_class_name = #{record.shpUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpUpdateMethodName != null">
+        shp_update_method_name = #{record.shpUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpUpdateCrudKbn != null">
+        shp_update_crud_kbn = #{record.shpUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="record.shpSysRemarks != null">
+        shp_sys_remarks = #{record.shpSysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpPrfCd != null">
+        shp_prf_cd = #{record.shpPrfCd,jdbcType=CHAR},
+      </if>
+      <if test="record.shpPcMlAddr != null">
+        shp_pc_ml_addr = #{record.shpPcMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpMblMlAddr != null">
+        shp_mbl_ml_addr = #{record.shpMblMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpUpdateAdmin != null">
+        shp_update_admin = #{record.shpUpdateAdmin,jdbcType=BIGINT},
+      </if>
+      <if test="record.shpRptMlAddr != null">
+        shp_rpt_ml_addr = #{record.shpRptMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpInstallDate != null">
+        shp_install_date = #{record.shpInstallDate,jdbcType=DATE},
+      </if>
+      <if test="record.shpComNo != null">
+        shp_com_no = #{record.shpComNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpComName != null">
+        shp_com_name = #{record.shpComName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update shop_mst
+    set shp_id = #{record.shpId,jdbcType=BIGINT},
+      shp_cd = #{record.shpCd,jdbcType=VARCHAR},
+      shp_pass = #{record.shpPass,jdbcType=VARCHAR},
+      shp_hdr_com_id = #{record.shpHdrComId,jdbcType=BIGINT},
+      shp_ope_com_id = #{record.shpOpeComId,jdbcType=BIGINT},
+      shp_grp_id = #{record.shpGrpId,jdbcType=BIGINT},
+      shp_name = #{record.shpName,jdbcType=VARCHAR},
+      shp_name_kn = #{record.shpNameKn,jdbcType=VARCHAR},
+      shp_zip_cd = #{record.shpZipCd,jdbcType=CHAR},
+      shp_addr01 = #{record.shpAddr01,jdbcType=VARCHAR},
+      shp_addr02 = #{record.shpAddr02,jdbcType=VARCHAR},
+      shp_addr03 = #{record.shpAddr03,jdbcType=VARCHAR},
+      shp_addr04 = #{record.shpAddr04,jdbcType=VARCHAR},
+      shp_tel_01 = #{record.shpTel01,jdbcType=VARCHAR},
+      shp_tel_02 = #{record.shpTel02,jdbcType=VARCHAR},
+      shp_tel_03 = #{record.shpTel03,jdbcType=VARCHAR},
+      shp_fax_01 = #{record.shpFax01,jdbcType=VARCHAR},
+      shp_fax_02 = #{record.shpFax02,jdbcType=VARCHAR},
+      shp_fax_03 = #{record.shpFax03,jdbcType=VARCHAR},
+      shp_remarks = #{record.shpRemarks,jdbcType=VARCHAR},
+      shp_avl_date_fr = #{record.shpAvlDateFr,jdbcType=DATE},
+      shp_avl_date_to = #{record.shpAvlDateTo,jdbcType=DATE},
+      shp_del_flg = #{record.shpDelFlg,jdbcType=CHAR},
+      shp_cdate = #{record.shpCdate,jdbcType=DATE},
+      shp_ctime = #{record.shpCtime,jdbcType=TIME},
+      shp_ctimestamp = #{record.shpCtimestamp,jdbcType=TIMESTAMP},
+      shp_udate = #{record.shpUdate,jdbcType=DATE},
+      shp_utime = #{record.shpUtime,jdbcType=TIME},
+      shp_utimestamp = #{record.shpUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{record.versionNo,jdbcType=BIGINT},
+      shp_update_user = #{record.shpUpdateUser,jdbcType=BIGINT},
+      shp_update_sys_name = #{record.shpUpdateSysName,jdbcType=VARCHAR},
+      shp_update_class_name = #{record.shpUpdateClassName,jdbcType=VARCHAR},
+      shp_update_method_name = #{record.shpUpdateMethodName,jdbcType=VARCHAR},
+      shp_update_crud_kbn = #{record.shpUpdateCrudKbn,jdbcType=CHAR},
+      shp_sys_remarks = #{record.shpSysRemarks,jdbcType=VARCHAR},
+      shp_prf_cd = #{record.shpPrfCd,jdbcType=CHAR},
+      shp_pc_ml_addr = #{record.shpPcMlAddr,jdbcType=VARCHAR},
+      shp_mbl_ml_addr = #{record.shpMblMlAddr,jdbcType=VARCHAR},
+      shp_update_admin = #{record.shpUpdateAdmin,jdbcType=BIGINT},
+      shp_rpt_ml_addr = #{record.shpRptMlAddr,jdbcType=VARCHAR},
+      shp_install_date = #{record.shpInstallDate,jdbcType=DATE},
+      shp_com_no = #{record.shpComNo,jdbcType=VARCHAR},
+      shp_com_name = #{record.shpComName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ShopMst">
+    update shop_mst
+    <set>
+      <if test="shpCd != null">
+        shp_cd = #{shpCd,jdbcType=VARCHAR},
+      </if>
+      <if test="shpPass != null">
+        shp_pass = #{shpPass,jdbcType=VARCHAR},
+      </if>
+      <if test="shpHdrComId != null">
+        shp_hdr_com_id = #{shpHdrComId,jdbcType=BIGINT},
+      </if>
+      <if test="shpOpeComId != null">
+        shp_ope_com_id = #{shpOpeComId,jdbcType=BIGINT},
+      </if>
+      <if test="shpGrpId != null">
+        shp_grp_id = #{shpGrpId,jdbcType=BIGINT},
+      </if>
+      <if test="shpName != null">
+        shp_name = #{shpName,jdbcType=VARCHAR},
+      </if>
+      <if test="shpNameKn != null">
+        shp_name_kn = #{shpNameKn,jdbcType=VARCHAR},
+      </if>
+      <if test="shpZipCd != null">
+        shp_zip_cd = #{shpZipCd,jdbcType=CHAR},
+      </if>
+      <if test="shpAddr01 != null">
+        shp_addr01 = #{shpAddr01,jdbcType=VARCHAR},
+      </if>
+      <if test="shpAddr02 != null">
+        shp_addr02 = #{shpAddr02,jdbcType=VARCHAR},
+      </if>
+      <if test="shpAddr03 != null">
+        shp_addr03 = #{shpAddr03,jdbcType=VARCHAR},
+      </if>
+      <if test="shpAddr04 != null">
+        shp_addr04 = #{shpAddr04,jdbcType=VARCHAR},
+      </if>
+      <if test="shpTel01 != null">
+        shp_tel_01 = #{shpTel01,jdbcType=VARCHAR},
+      </if>
+      <if test="shpTel02 != null">
+        shp_tel_02 = #{shpTel02,jdbcType=VARCHAR},
+      </if>
+      <if test="shpTel03 != null">
+        shp_tel_03 = #{shpTel03,jdbcType=VARCHAR},
+      </if>
+      <if test="shpFax01 != null">
+        shp_fax_01 = #{shpFax01,jdbcType=VARCHAR},
+      </if>
+      <if test="shpFax02 != null">
+        shp_fax_02 = #{shpFax02,jdbcType=VARCHAR},
+      </if>
+      <if test="shpFax03 != null">
+        shp_fax_03 = #{shpFax03,jdbcType=VARCHAR},
+      </if>
+      <if test="shpRemarks != null">
+        shp_remarks = #{shpRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="shpAvlDateFr != null">
+        shp_avl_date_fr = #{shpAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="shpAvlDateTo != null">
+        shp_avl_date_to = #{shpAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="shpDelFlg != null">
+        shp_del_flg = #{shpDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="shpCdate != null">
+        shp_cdate = #{shpCdate,jdbcType=DATE},
+      </if>
+      <if test="shpCtime != null">
+        shp_ctime = #{shpCtime,jdbcType=TIME},
+      </if>
+      <if test="shpCtimestamp != null">
+        shp_ctimestamp = #{shpCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shpUdate != null">
+        shp_udate = #{shpUdate,jdbcType=DATE},
+      </if>
+      <if test="shpUtime != null">
+        shp_utime = #{shpUtime,jdbcType=TIME},
+      </if>
+      <if test="shpUtimestamp != null">
+        shp_utimestamp = #{shpUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        version_no = #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="shpUpdateUser != null">
+        shp_update_user = #{shpUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="shpUpdateSysName != null">
+        shp_update_sys_name = #{shpUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="shpUpdateClassName != null">
+        shp_update_class_name = #{shpUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="shpUpdateMethodName != null">
+        shp_update_method_name = #{shpUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="shpUpdateCrudKbn != null">
+        shp_update_crud_kbn = #{shpUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="shpSysRemarks != null">
+        shp_sys_remarks = #{shpSysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="shpPrfCd != null">
+        shp_prf_cd = #{shpPrfCd,jdbcType=CHAR},
+      </if>
+      <if test="shpPcMlAddr != null">
+        shp_pc_ml_addr = #{shpPcMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="shpMblMlAddr != null">
+        shp_mbl_ml_addr = #{shpMblMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="shpUpdateAdmin != null">
+        shp_update_admin = #{shpUpdateAdmin,jdbcType=BIGINT},
+      </if>
+      <if test="shpRptMlAddr != null">
+        shp_rpt_ml_addr = #{shpRptMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="shpInstallDate != null">
+        shp_install_date = #{shpInstallDate,jdbcType=DATE},
+      </if>
+      <if test="shpComNo != null">
+        shp_com_no = #{shpComNo,jdbcType=VARCHAR},
+      </if>
+      <if test="shpComName != null">
+        shp_com_name = #{shpComName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shp_id = #{shpId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ShopMst">
+    update shop_mst
+    set shp_cd = #{shpCd,jdbcType=VARCHAR},
+      shp_pass = #{shpPass,jdbcType=VARCHAR},
+      shp_hdr_com_id = #{shpHdrComId,jdbcType=BIGINT},
+      shp_ope_com_id = #{shpOpeComId,jdbcType=BIGINT},
+      shp_grp_id = #{shpGrpId,jdbcType=BIGINT},
+      shp_name = #{shpName,jdbcType=VARCHAR},
+      shp_name_kn = #{shpNameKn,jdbcType=VARCHAR},
+      shp_zip_cd = #{shpZipCd,jdbcType=CHAR},
+      shp_addr01 = #{shpAddr01,jdbcType=VARCHAR},
+      shp_addr02 = #{shpAddr02,jdbcType=VARCHAR},
+      shp_addr03 = #{shpAddr03,jdbcType=VARCHAR},
+      shp_addr04 = #{shpAddr04,jdbcType=VARCHAR},
+      shp_tel_01 = #{shpTel01,jdbcType=VARCHAR},
+      shp_tel_02 = #{shpTel02,jdbcType=VARCHAR},
+      shp_tel_03 = #{shpTel03,jdbcType=VARCHAR},
+      shp_fax_01 = #{shpFax01,jdbcType=VARCHAR},
+      shp_fax_02 = #{shpFax02,jdbcType=VARCHAR},
+      shp_fax_03 = #{shpFax03,jdbcType=VARCHAR},
+      shp_remarks = #{shpRemarks,jdbcType=VARCHAR},
+      shp_avl_date_fr = #{shpAvlDateFr,jdbcType=DATE},
+      shp_avl_date_to = #{shpAvlDateTo,jdbcType=DATE},
+      shp_del_flg = #{shpDelFlg,jdbcType=CHAR},
+      shp_cdate = #{shpCdate,jdbcType=DATE},
+      shp_ctime = #{shpCtime,jdbcType=TIME},
+      shp_ctimestamp = #{shpCtimestamp,jdbcType=TIMESTAMP},
+      shp_udate = #{shpUdate,jdbcType=DATE},
+      shp_utime = #{shpUtime,jdbcType=TIME},
+      shp_utimestamp = #{shpUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{versionNo,jdbcType=BIGINT},
+      shp_update_user = #{shpUpdateUser,jdbcType=BIGINT},
+      shp_update_sys_name = #{shpUpdateSysName,jdbcType=VARCHAR},
+      shp_update_class_name = #{shpUpdateClassName,jdbcType=VARCHAR},
+      shp_update_method_name = #{shpUpdateMethodName,jdbcType=VARCHAR},
+      shp_update_crud_kbn = #{shpUpdateCrudKbn,jdbcType=CHAR},
+      shp_sys_remarks = #{shpSysRemarks,jdbcType=VARCHAR},
+      shp_prf_cd = #{shpPrfCd,jdbcType=CHAR},
+      shp_pc_ml_addr = #{shpPcMlAddr,jdbcType=VARCHAR},
+      shp_mbl_ml_addr = #{shpMblMlAddr,jdbcType=VARCHAR},
+      shp_update_admin = #{shpUpdateAdmin,jdbcType=BIGINT},
+      shp_rpt_ml_addr = #{shpRptMlAddr,jdbcType=VARCHAR},
+      shp_install_date = #{shpInstallDate,jdbcType=DATE},
+      shp_com_no = #{shpComNo,jdbcType=VARCHAR},
+      shp_com_name = #{shpComName,jdbcType=VARCHAR}
+    where shp_id = #{shpId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ShopMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shop_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectOneByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ShopMstCriteria" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shop_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>

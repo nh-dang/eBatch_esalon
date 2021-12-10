@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plussum.ebatch.persistence.dao.generator.ChkoutHdrFilMapper">
+  <resultMap id="BaseResultMap" type="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFil">
+    <id column="coh_id" jdbcType="BIGINT" property="cohId" />
+    <result column="coh_sts_kbn" jdbcType="CHAR" property="cohStsKbn" />
+    <result column="coh_date" jdbcType="DATE" property="cohDate" />
+    <result column="coh_ent_time" jdbcType="TIME" property="cohEntTime" />
+    <result column="coh_wait_time" jdbcType="NUMERIC" property="cohWaitTime" />
+    <result column="coh_str_time" jdbcType="TIME" property="cohStrTime" />
+    <result column="coh_end_time" jdbcType="TIME" property="cohEndTime" />
+    <result column="coh_shp_id" jdbcType="BIGINT" property="cohShpId" />
+    <result column="coh_cst_id" jdbcType="BIGINT" property="cohCstId" />
+    <result column="coh_stf_id" jdbcType="BIGINT" property="cohStfId" />
+    <result column="coh_apnt_flg" jdbcType="CHAR" property="cohApntFlg" />
+    <result column="coh_cst_kbn" jdbcType="CHAR" property="cohCstKbn" />
+    <result column="coh_tag_no" jdbcType="VARCHAR" property="cohTagNo" />
+    <result column="coh_total_price" jdbcType="NUMERIC" property="cohTotalPrice" />
+    <result column="coh_total_tax" jdbcType="NUMERIC" property="cohTotalTax" />
+    <result column="coh_remarks" jdbcType="VARCHAR" property="cohRemarks" />
+    <result column="coh_avl_date_fr" jdbcType="DATE" property="cohAvlDateFr" />
+    <result column="coh_avl_date_to" jdbcType="DATE" property="cohAvlDateTo" />
+    <result column="coh_del_flg" jdbcType="CHAR" property="cohDelFlg" />
+    <result column="coh_cdate" jdbcType="DATE" property="cohCdate" />
+    <result column="coh_ctime" jdbcType="TIME" property="cohCtime" />
+    <result column="coh_ctimestamp" jdbcType="TIMESTAMP" property="cohCtimestamp" />
+    <result column="coh_udate" jdbcType="DATE" property="cohUdate" />
+    <result column="coh_utime" jdbcType="TIME" property="cohUtime" />
+    <result column="coh_utimestamp" jdbcType="TIMESTAMP" property="cohUtimestamp" />
+    <result column="version_no" jdbcType="BIGINT" property="versionNo" />
+    <result column="coh_update_user" jdbcType="BIGINT" property="cohUpdateUser" />
+    <result column="coh_update_sys_name" jdbcType="VARCHAR" property="cohUpdateSysName" />
+    <result column="coh_update_class_name" jdbcType="VARCHAR" property="cohUpdateClassName" />
+    <result column="coh_update_method_name" jdbcType="VARCHAR" property="cohUpdateMethodName" />
+    <result column="coh_update_crud_kbn" jdbcType="CHAR" property="cohUpdateCrudKbn" />
+    <result column="coh_sys_remarks" jdbcType="VARCHAR" property="cohSysRemarks" />
+    <result column="coh_bef_id" jdbcType="BIGINT" property="cohBefId" />
+    <result column="coh_reserv_str_time" jdbcType="TIME" property="cohReservStrTime" />
+    <result column="coh_reserv_end_time" jdbcType="TIME" property="cohReservEndTime" />
+    <result column="coh_raiten_kaisu" jdbcType="NUMERIC" property="cohRaitenKaisu" />
+    <result column="coh_raiten_kankaku" jdbcType="NUMERIC" property="cohRaitenKankaku" />
+    <result column="coh_receipt_remarks" jdbcType="VARCHAR" property="cohReceiptRemarks" />
+    <result column="coh_kaijyo_remarks" jdbcType="VARCHAR" property="cohKaijyoRemarks" />
+    <result column="coh_expt_finish_time" jdbcType="TIME" property="cohExptFinishTime" />
+    <result column="coh_visit_mot" jdbcType="CHAR" property="cohVisitMot" />
+    <result column="coh_rsv_id" jdbcType="BIGINT" property="cohRsvId" />
+    <result column="coh_rsv_rte_sbt" jdbcType="CHAR" property="cohRsvRteSbt" />
+    <result column="coh_rsv_tel_01" jdbcType="VARCHAR" property="cohRsvTel01" />
+    <result column="coh_rsv_tel_02" jdbcType="VARCHAR" property="cohRsvTel02" />
+    <result column="coh_rsv_tel_03" jdbcType="VARCHAR" property="cohRsvTel03" />
+    <result column="coh_rsv_ml_addr" jdbcType="VARCHAR" property="cohRsvMlAddr" />
+    <result column="coh_rsv_qst_ans" jdbcType="VARCHAR" property="cohRsvQstAns" />
+    <result column="coh_rsv_req_cns" jdbcType="VARCHAR" property="cohRsvReqCns" />
+    <result column="coh_pre_paid_price" jdbcType="NUMERIC" property="cohPrePaidPrice" />
+    <result column="coh_seat_id" jdbcType="BIGINT" property="cohSeatId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    coh_id, coh_sts_kbn, coh_date, coh_ent_time, coh_wait_time, coh_str_time, coh_end_time, 
+    coh_shp_id, coh_cst_id, coh_stf_id, coh_apnt_flg, coh_cst_kbn, coh_tag_no, coh_total_price, 
+    coh_total_tax, coh_remarks, coh_avl_date_fr, coh_avl_date_to, coh_del_flg, coh_cdate, 
+    coh_ctime, coh_ctimestamp, coh_udate, coh_utime, coh_utimestamp, version_no, coh_update_user, 
+    coh_update_sys_name, coh_update_class_name, coh_update_method_name, coh_update_crud_kbn, 
+    coh_sys_remarks, coh_bef_id, coh_reserv_str_time, coh_reserv_end_time, coh_raiten_kaisu, 
+    coh_raiten_kankaku, coh_receipt_remarks, coh_kaijyo_remarks, coh_expt_finish_time, 
+    coh_visit_mot, coh_rsv_id, coh_rsv_rte_sbt, coh_rsv_tel_01, coh_rsv_tel_02, coh_rsv_tel_03, 
+    coh_rsv_ml_addr, coh_rsv_qst_ans, coh_rsv_req_cns, coh_pre_paid_price, coh_seat_id
+  </sql>
+  <select id="selectByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFilCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from chkout_hdr_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from chkout_hdr_fil
+    where coh_id = #{cohId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from chkout_hdr_fil
+    where coh_id = #{cohId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFilCriteria">
+    delete from chkout_hdr_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFil">
+    insert into chkout_hdr_fil (coh_id, coh_sts_kbn, coh_date, 
+      coh_ent_time, coh_wait_time, coh_str_time, 
+      coh_end_time, coh_shp_id, coh_cst_id, 
+      coh_stf_id, coh_apnt_flg, coh_cst_kbn, 
+      coh_tag_no, coh_total_price, coh_total_tax, 
+      coh_remarks, coh_avl_date_fr, coh_avl_date_to, 
+      coh_del_flg, coh_cdate, coh_ctime, 
+      coh_ctimestamp, coh_udate, coh_utime, 
+      coh_utimestamp, version_no, coh_update_user, 
+      coh_update_sys_name, coh_update_class_name, coh_update_method_name, 
+      coh_update_crud_kbn, coh_sys_remarks, coh_bef_id, 
+      coh_reserv_str_time, coh_reserv_end_time, coh_raiten_kaisu, 
+      coh_raiten_kankaku, coh_receipt_remarks, coh_kaijyo_remarks, 
+      coh_expt_finish_time, coh_visit_mot, coh_rsv_id, 
+      coh_rsv_rte_sbt, coh_rsv_tel_01, coh_rsv_tel_02, 
+      coh_rsv_tel_03, coh_rsv_ml_addr, coh_rsv_qst_ans, 
+      coh_rsv_req_cns, coh_pre_paid_price, coh_seat_id
+      )
+    values (#{cohId,jdbcType=BIGINT}, #{cohStsKbn,jdbcType=CHAR}, #{cohDate,jdbcType=DATE}, 
+      #{cohEntTime,jdbcType=TIME}, #{cohWaitTime,jdbcType=NUMERIC}, #{cohStrTime,jdbcType=TIME}, 
+      #{cohEndTime,jdbcType=TIME}, #{cohShpId,jdbcType=BIGINT}, #{cohCstId,jdbcType=BIGINT}, 
+      #{cohStfId,jdbcType=BIGINT}, #{cohApntFlg,jdbcType=CHAR}, #{cohCstKbn,jdbcType=CHAR}, 
+      #{cohTagNo,jdbcType=VARCHAR}, #{cohTotalPrice,jdbcType=NUMERIC}, #{cohTotalTax,jdbcType=NUMERIC}, 
+      #{cohRemarks,jdbcType=VARCHAR}, #{cohAvlDateFr,jdbcType=DATE}, #{cohAvlDateTo,jdbcType=DATE}, 
+      #{cohDelFlg,jdbcType=CHAR}, #{cohCdate,jdbcType=DATE}, #{cohCtime,jdbcType=TIME}, 
+      #{cohCtimestamp,jdbcType=TIMESTAMP}, #{cohUdate,jdbcType=DATE}, #{cohUtime,jdbcType=TIME}, 
+      #{cohUtimestamp,jdbcType=TIMESTAMP}, #{versionNo,jdbcType=BIGINT}, #{cohUpdateUser,jdbcType=BIGINT}, 
+      #{cohUpdateSysName,jdbcType=VARCHAR}, #{cohUpdateClassName,jdbcType=VARCHAR}, #{cohUpdateMethodName,jdbcType=VARCHAR}, 
+      #{cohUpdateCrudKbn,jdbcType=CHAR}, #{cohSysRemarks,jdbcType=VARCHAR}, #{cohBefId,jdbcType=BIGINT}, 
+      #{cohReservStrTime,jdbcType=TIME}, #{cohReservEndTime,jdbcType=TIME}, #{cohRaitenKaisu,jdbcType=NUMERIC}, 
+      #{cohRaitenKankaku,jdbcType=NUMERIC}, #{cohReceiptRemarks,jdbcType=VARCHAR}, #{cohKaijyoRemarks,jdbcType=VARCHAR}, 
+      #{cohExptFinishTime,jdbcType=TIME}, #{cohVisitMot,jdbcType=CHAR}, #{cohRsvId,jdbcType=BIGINT}, 
+      #{cohRsvRteSbt,jdbcType=CHAR}, #{cohRsvTel01,jdbcType=VARCHAR}, #{cohRsvTel02,jdbcType=VARCHAR}, 
+      #{cohRsvTel03,jdbcType=VARCHAR}, #{cohRsvMlAddr,jdbcType=VARCHAR}, #{cohRsvQstAns,jdbcType=VARCHAR}, 
+      #{cohRsvReqCns,jdbcType=VARCHAR}, #{cohPrePaidPrice,jdbcType=NUMERIC}, #{cohSeatId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFil">
+    insert into chkout_hdr_fil
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cohId != null">
+        coh_id,
+      </if>
+      <if test="cohStsKbn != null">
+        coh_sts_kbn,
+      </if>
+      <if test="cohDate != null">
+        coh_date,
+      </if>
+      <if test="cohEntTime != null">
+        coh_ent_time,
+      </if>
+      <if test="cohWaitTime != null">
+        coh_wait_time,
+      </if>
+      <if test="cohStrTime != null">
+        coh_str_time,
+      </if>
+      <if test="cohEndTime != null">
+        coh_end_time,
+      </if>
+      <if test="cohShpId != null">
+        coh_shp_id,
+      </if>
+      <if test="cohCstId != null">
+        coh_cst_id,
+      </if>
+      <if test="cohStfId != null">
+        coh_stf_id,
+      </if>
+      <if test="cohApntFlg != null">
+        coh_apnt_flg,
+      </if>
+      <if test="cohCstKbn != null">
+        coh_cst_kbn,
+      </if>
+      <if test="cohTagNo != null">
+        coh_tag_no,
+      </if>
+      <if test="cohTotalPrice != null">
+        coh_total_price,
+      </if>
+      <if test="cohTotalTax != null">
+        coh_total_tax,
+      </if>
+      <if test="cohRemarks != null">
+        coh_remarks,
+      </if>
+      <if test="cohAvlDateFr != null">
+        coh_avl_date_fr,
+      </if>
+      <if test="cohAvlDateTo != null">
+        coh_avl_date_to,
+      </if>
+      <if test="cohDelFlg != null">
+        coh_del_flg,
+      </if>
+      <if test="cohCdate != null">
+        coh_cdate,
+      </if>
+      <if test="cohCtime != null">
+        coh_ctime,
+      </if>
+      <if test="cohCtimestamp != null">
+        coh_ctimestamp,
+      </if>
+      <if test="cohUdate != null">
+        coh_udate,
+      </if>
+      <if test="cohUtime != null">
+        coh_utime,
+      </if>
+      <if test="cohUtimestamp != null">
+        coh_utimestamp,
+      </if>
+      <if test="versionNo != null">
+        version_no,
+      </if>
+      <if test="cohUpdateUser != null">
+        coh_update_user,
+      </if>
+      <if test="cohUpdateSysName != null">
+        coh_update_sys_name,
+      </if>
+      <if test="cohUpdateClassName != null">
+        coh_update_class_name,
+      </if>
+      <if test="cohUpdateMethodName != null">
+        coh_update_method_name,
+      </if>
+      <if test="cohUpdateCrudKbn != null">
+        coh_update_crud_kbn,
+      </if>
+      <if test="cohSysRemarks != null">
+        coh_sys_remarks,
+      </if>
+      <if test="cohBefId != null">
+        coh_bef_id,
+      </if>
+      <if test="cohReservStrTime != null">
+        coh_reserv_str_time,
+      </if>
+      <if test="cohReservEndTime != null">
+        coh_reserv_end_time,
+      </if>
+      <if test="cohRaitenKaisu != null">
+        coh_raiten_kaisu,
+      </if>
+      <if test="cohRaitenKankaku != null">
+        coh_raiten_kankaku,
+      </if>
+      <if test="cohReceiptRemarks != null">
+        coh_receipt_remarks,
+      </if>
+      <if test="cohKaijyoRemarks != null">
+        coh_kaijyo_remarks,
+      </if>
+      <if test="cohExptFinishTime != null">
+        coh_expt_finish_time,
+      </if>
+      <if test="cohVisitMot != null">
+        coh_visit_mot,
+      </if>
+      <if test="cohRsvId != null">
+        coh_rsv_id,
+      </if>
+      <if test="cohRsvRteSbt != null">
+        coh_rsv_rte_sbt,
+      </if>
+      <if test="cohRsvTel01 != null">
+        coh_rsv_tel_01,
+      </if>
+      <if test="cohRsvTel02 != null">
+        coh_rsv_tel_02,
+      </if>
+      <if test="cohRsvTel03 != null">
+        coh_rsv_tel_03,
+      </if>
+      <if test="cohRsvMlAddr != null">
+        coh_rsv_ml_addr,
+      </if>
+      <if test="cohRsvQstAns != null">
+        coh_rsv_qst_ans,
+      </if>
+      <if test="cohRsvReqCns != null">
+        coh_rsv_req_cns,
+      </if>
+      <if test="cohPrePaidPrice != null">
+        coh_pre_paid_price,
+      </if>
+      <if test="cohSeatId != null">
+        coh_seat_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cohId != null">
+        #{cohId,jdbcType=BIGINT},
+      </if>
+      <if test="cohStsKbn != null">
+        #{cohStsKbn,jdbcType=CHAR},
+      </if>
+      <if test="cohDate != null">
+        #{cohDate,jdbcType=DATE},
+      </if>
+      <if test="cohEntTime != null">
+        #{cohEntTime,jdbcType=TIME},
+      </if>
+      <if test="cohWaitTime != null">
+        #{cohWaitTime,jdbcType=NUMERIC},
+      </if>
+      <if test="cohStrTime != null">
+        #{cohStrTime,jdbcType=TIME},
+      </if>
+      <if test="cohEndTime != null">
+        #{cohEndTime,jdbcType=TIME},
+      </if>
+      <if test="cohShpId != null">
+        #{cohShpId,jdbcType=BIGINT},
+      </if>
+      <if test="cohCstId != null">
+        #{cohCstId,jdbcType=BIGINT},
+      </if>
+      <if test="cohStfId != null">
+        #{cohStfId,jdbcType=BIGINT},
+      </if>
+      <if test="cohApntFlg != null">
+        #{cohApntFlg,jdbcType=CHAR},
+      </if>
+      <if test="cohCstKbn != null">
+        #{cohCstKbn,jdbcType=CHAR},
+      </if>
+      <if test="cohTagNo != null">
+        #{cohTagNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cohTotalPrice != null">
+        #{cohTotalPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="cohTotalTax != null">
+        #{cohTotalTax,jdbcType=NUMERIC},
+      </if>
+      <if test="cohRemarks != null">
+        #{cohRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="cohAvlDateFr != null">
+        #{cohAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="cohAvlDateTo != null">
+        #{cohAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="cohDelFlg != null">
+        #{cohDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="cohCdate != null">
+        #{cohCdate,jdbcType=DATE},
+      </if>
+      <if test="cohCtime != null">
+        #{cohCtime,jdbcType=TIME},
+      </if>
+      <if test="cohCtimestamp != null">
+        #{cohCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cohUdate != null">
+        #{cohUdate,jdbcType=DATE},
+      </if>
+      <if test="cohUtime != null">
+        #{cohUtime,jdbcType=TIME},
+      </if>
+      <if test="cohUtimestamp != null">
+        #{cohUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="cohUpdateUser != null">
+        #{cohUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="cohUpdateSysName != null">
+        #{cohUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="cohUpdateClassName != null">
+        #{cohUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="cohUpdateMethodName != null">
+        #{cohUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="cohUpdateCrudKbn != null">
+        #{cohUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="cohSysRemarks != null">
+        #{cohSysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="cohBefId != null">
+        #{cohBefId,jdbcType=BIGINT},
+      </if>
+      <if test="cohReservStrTime != null">
+        #{cohReservStrTime,jdbcType=TIME},
+      </if>
+      <if test="cohReservEndTime != null">
+        #{cohReservEndTime,jdbcType=TIME},
+      </if>
+      <if test="cohRaitenKaisu != null">
+        #{cohRaitenKaisu,jdbcType=NUMERIC},
+      </if>
+      <if test="cohRaitenKankaku != null">
+        #{cohRaitenKankaku,jdbcType=NUMERIC},
+      </if>
+      <if test="cohReceiptRemarks != null">
+        #{cohReceiptRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="cohKaijyoRemarks != null">
+        #{cohKaijyoRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="cohExptFinishTime != null">
+        #{cohExptFinishTime,jdbcType=TIME},
+      </if>
+      <if test="cohVisitMot != null">
+        #{cohVisitMot,jdbcType=CHAR},
+      </if>
+      <if test="cohRsvId != null">
+        #{cohRsvId,jdbcType=BIGINT},
+      </if>
+      <if test="cohRsvRteSbt != null">
+        #{cohRsvRteSbt,jdbcType=CHAR},
+      </if>
+      <if test="cohRsvTel01 != null">
+        #{cohRsvTel01,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvTel02 != null">
+        #{cohRsvTel02,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvTel03 != null">
+        #{cohRsvTel03,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvMlAddr != null">
+        #{cohRsvMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvQstAns != null">
+        #{cohRsvQstAns,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvReqCns != null">
+        #{cohRsvReqCns,jdbcType=VARCHAR},
+      </if>
+      <if test="cohPrePaidPrice != null">
+        #{cohPrePaidPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="cohSeatId != null">
+        #{cohSeatId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFilCriteria" resultType="java.lang.Long">
+    select count(*) from chkout_hdr_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update chkout_hdr_fil
+    <set>
+      <if test="record.cohId != null">
+        coh_id = #{record.cohId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cohStsKbn != null">
+        coh_sts_kbn = #{record.cohStsKbn,jdbcType=CHAR},
+      </if>
+      <if test="record.cohDate != null">
+        coh_date = #{record.cohDate,jdbcType=DATE},
+      </if>
+      <if test="record.cohEntTime != null">
+        coh_ent_time = #{record.cohEntTime,jdbcType=TIME},
+      </if>
+      <if test="record.cohWaitTime != null">
+        coh_wait_time = #{record.cohWaitTime,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cohStrTime != null">
+        coh_str_time = #{record.cohStrTime,jdbcType=TIME},
+      </if>
+      <if test="record.cohEndTime != null">
+        coh_end_time = #{record.cohEndTime,jdbcType=TIME},
+      </if>
+      <if test="record.cohShpId != null">
+        coh_shp_id = #{record.cohShpId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cohCstId != null">
+        coh_cst_id = #{record.cohCstId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cohStfId != null">
+        coh_stf_id = #{record.cohStfId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cohApntFlg != null">
+        coh_apnt_flg = #{record.cohApntFlg,jdbcType=CHAR},
+      </if>
+      <if test="record.cohCstKbn != null">
+        coh_cst_kbn = #{record.cohCstKbn,jdbcType=CHAR},
+      </if>
+      <if test="record.cohTagNo != null">
+        coh_tag_no = #{record.cohTagNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohTotalPrice != null">
+        coh_total_price = #{record.cohTotalPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cohTotalTax != null">
+        coh_total_tax = #{record.cohTotalTax,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cohRemarks != null">
+        coh_remarks = #{record.cohRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohAvlDateFr != null">
+        coh_avl_date_fr = #{record.cohAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="record.cohAvlDateTo != null">
+        coh_avl_date_to = #{record.cohAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="record.cohDelFlg != null">
+        coh_del_flg = #{record.cohDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="record.cohCdate != null">
+        coh_cdate = #{record.cohCdate,jdbcType=DATE},
+      </if>
+      <if test="record.cohCtime != null">
+        coh_ctime = #{record.cohCtime,jdbcType=TIME},
+      </if>
+      <if test="record.cohCtimestamp != null">
+        coh_ctimestamp = #{record.cohCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cohUdate != null">
+        coh_udate = #{record.cohUdate,jdbcType=DATE},
+      </if>
+      <if test="record.cohUtime != null">
+        coh_utime = #{record.cohUtime,jdbcType=TIME},
+      </if>
+      <if test="record.cohUtimestamp != null">
+        coh_utimestamp = #{record.cohUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.versionNo != null">
+        version_no = #{record.versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="record.cohUpdateUser != null">
+        coh_update_user = #{record.cohUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.cohUpdateSysName != null">
+        coh_update_sys_name = #{record.cohUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohUpdateClassName != null">
+        coh_update_class_name = #{record.cohUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohUpdateMethodName != null">
+        coh_update_method_name = #{record.cohUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohUpdateCrudKbn != null">
+        coh_update_crud_kbn = #{record.cohUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="record.cohSysRemarks != null">
+        coh_sys_remarks = #{record.cohSysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohBefId != null">
+        coh_bef_id = #{record.cohBefId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cohReservStrTime != null">
+        coh_reserv_str_time = #{record.cohReservStrTime,jdbcType=TIME},
+      </if>
+      <if test="record.cohReservEndTime != null">
+        coh_reserv_end_time = #{record.cohReservEndTime,jdbcType=TIME},
+      </if>
+      <if test="record.cohRaitenKaisu != null">
+        coh_raiten_kaisu = #{record.cohRaitenKaisu,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cohRaitenKankaku != null">
+        coh_raiten_kankaku = #{record.cohRaitenKankaku,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cohReceiptRemarks != null">
+        coh_receipt_remarks = #{record.cohReceiptRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohKaijyoRemarks != null">
+        coh_kaijyo_remarks = #{record.cohKaijyoRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohExptFinishTime != null">
+        coh_expt_finish_time = #{record.cohExptFinishTime,jdbcType=TIME},
+      </if>
+      <if test="record.cohVisitMot != null">
+        coh_visit_mot = #{record.cohVisitMot,jdbcType=CHAR},
+      </if>
+      <if test="record.cohRsvId != null">
+        coh_rsv_id = #{record.cohRsvId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cohRsvRteSbt != null">
+        coh_rsv_rte_sbt = #{record.cohRsvRteSbt,jdbcType=CHAR},
+      </if>
+      <if test="record.cohRsvTel01 != null">
+        coh_rsv_tel_01 = #{record.cohRsvTel01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohRsvTel02 != null">
+        coh_rsv_tel_02 = #{record.cohRsvTel02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohRsvTel03 != null">
+        coh_rsv_tel_03 = #{record.cohRsvTel03,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohRsvMlAddr != null">
+        coh_rsv_ml_addr = #{record.cohRsvMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohRsvQstAns != null">
+        coh_rsv_qst_ans = #{record.cohRsvQstAns,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohRsvReqCns != null">
+        coh_rsv_req_cns = #{record.cohRsvReqCns,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cohPrePaidPrice != null">
+        coh_pre_paid_price = #{record.cohPrePaidPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cohSeatId != null">
+        coh_seat_id = #{record.cohSeatId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update chkout_hdr_fil
+    set coh_id = #{record.cohId,jdbcType=BIGINT},
+      coh_sts_kbn = #{record.cohStsKbn,jdbcType=CHAR},
+      coh_date = #{record.cohDate,jdbcType=DATE},
+      coh_ent_time = #{record.cohEntTime,jdbcType=TIME},
+      coh_wait_time = #{record.cohWaitTime,jdbcType=NUMERIC},
+      coh_str_time = #{record.cohStrTime,jdbcType=TIME},
+      coh_end_time = #{record.cohEndTime,jdbcType=TIME},
+      coh_shp_id = #{record.cohShpId,jdbcType=BIGINT},
+      coh_cst_id = #{record.cohCstId,jdbcType=BIGINT},
+      coh_stf_id = #{record.cohStfId,jdbcType=BIGINT},
+      coh_apnt_flg = #{record.cohApntFlg,jdbcType=CHAR},
+      coh_cst_kbn = #{record.cohCstKbn,jdbcType=CHAR},
+      coh_tag_no = #{record.cohTagNo,jdbcType=VARCHAR},
+      coh_total_price = #{record.cohTotalPrice,jdbcType=NUMERIC},
+      coh_total_tax = #{record.cohTotalTax,jdbcType=NUMERIC},
+      coh_remarks = #{record.cohRemarks,jdbcType=VARCHAR},
+      coh_avl_date_fr = #{record.cohAvlDateFr,jdbcType=DATE},
+      coh_avl_date_to = #{record.cohAvlDateTo,jdbcType=DATE},
+      coh_del_flg = #{record.cohDelFlg,jdbcType=CHAR},
+      coh_cdate = #{record.cohCdate,jdbcType=DATE},
+      coh_ctime = #{record.cohCtime,jdbcType=TIME},
+      coh_ctimestamp = #{record.cohCtimestamp,jdbcType=TIMESTAMP},
+      coh_udate = #{record.cohUdate,jdbcType=DATE},
+      coh_utime = #{record.cohUtime,jdbcType=TIME},
+      coh_utimestamp = #{record.cohUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{record.versionNo,jdbcType=BIGINT},
+      coh_update_user = #{record.cohUpdateUser,jdbcType=BIGINT},
+      coh_update_sys_name = #{record.cohUpdateSysName,jdbcType=VARCHAR},
+      coh_update_class_name = #{record.cohUpdateClassName,jdbcType=VARCHAR},
+      coh_update_method_name = #{record.cohUpdateMethodName,jdbcType=VARCHAR},
+      coh_update_crud_kbn = #{record.cohUpdateCrudKbn,jdbcType=CHAR},
+      coh_sys_remarks = #{record.cohSysRemarks,jdbcType=VARCHAR},
+      coh_bef_id = #{record.cohBefId,jdbcType=BIGINT},
+      coh_reserv_str_time = #{record.cohReservStrTime,jdbcType=TIME},
+      coh_reserv_end_time = #{record.cohReservEndTime,jdbcType=TIME},
+      coh_raiten_kaisu = #{record.cohRaitenKaisu,jdbcType=NUMERIC},
+      coh_raiten_kankaku = #{record.cohRaitenKankaku,jdbcType=NUMERIC},
+      coh_receipt_remarks = #{record.cohReceiptRemarks,jdbcType=VARCHAR},
+      coh_kaijyo_remarks = #{record.cohKaijyoRemarks,jdbcType=VARCHAR},
+      coh_expt_finish_time = #{record.cohExptFinishTime,jdbcType=TIME},
+      coh_visit_mot = #{record.cohVisitMot,jdbcType=CHAR},
+      coh_rsv_id = #{record.cohRsvId,jdbcType=BIGINT},
+      coh_rsv_rte_sbt = #{record.cohRsvRteSbt,jdbcType=CHAR},
+      coh_rsv_tel_01 = #{record.cohRsvTel01,jdbcType=VARCHAR},
+      coh_rsv_tel_02 = #{record.cohRsvTel02,jdbcType=VARCHAR},
+      coh_rsv_tel_03 = #{record.cohRsvTel03,jdbcType=VARCHAR},
+      coh_rsv_ml_addr = #{record.cohRsvMlAddr,jdbcType=VARCHAR},
+      coh_rsv_qst_ans = #{record.cohRsvQstAns,jdbcType=VARCHAR},
+      coh_rsv_req_cns = #{record.cohRsvReqCns,jdbcType=VARCHAR},
+      coh_pre_paid_price = #{record.cohPrePaidPrice,jdbcType=NUMERIC},
+      coh_seat_id = #{record.cohSeatId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFil">
+    update chkout_hdr_fil
+    <set>
+      <if test="cohStsKbn != null">
+        coh_sts_kbn = #{cohStsKbn,jdbcType=CHAR},
+      </if>
+      <if test="cohDate != null">
+        coh_date = #{cohDate,jdbcType=DATE},
+      </if>
+      <if test="cohEntTime != null">
+        coh_ent_time = #{cohEntTime,jdbcType=TIME},
+      </if>
+      <if test="cohWaitTime != null">
+        coh_wait_time = #{cohWaitTime,jdbcType=NUMERIC},
+      </if>
+      <if test="cohStrTime != null">
+        coh_str_time = #{cohStrTime,jdbcType=TIME},
+      </if>
+      <if test="cohEndTime != null">
+        coh_end_time = #{cohEndTime,jdbcType=TIME},
+      </if>
+      <if test="cohShpId != null">
+        coh_shp_id = #{cohShpId,jdbcType=BIGINT},
+      </if>
+      <if test="cohCstId != null">
+        coh_cst_id = #{cohCstId,jdbcType=BIGINT},
+      </if>
+      <if test="cohStfId != null">
+        coh_stf_id = #{cohStfId,jdbcType=BIGINT},
+      </if>
+      <if test="cohApntFlg != null">
+        coh_apnt_flg = #{cohApntFlg,jdbcType=CHAR},
+      </if>
+      <if test="cohCstKbn != null">
+        coh_cst_kbn = #{cohCstKbn,jdbcType=CHAR},
+      </if>
+      <if test="cohTagNo != null">
+        coh_tag_no = #{cohTagNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cohTotalPrice != null">
+        coh_total_price = #{cohTotalPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="cohTotalTax != null">
+        coh_total_tax = #{cohTotalTax,jdbcType=NUMERIC},
+      </if>
+      <if test="cohRemarks != null">
+        coh_remarks = #{cohRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="cohAvlDateFr != null">
+        coh_avl_date_fr = #{cohAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="cohAvlDateTo != null">
+        coh_avl_date_to = #{cohAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="cohDelFlg != null">
+        coh_del_flg = #{cohDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="cohCdate != null">
+        coh_cdate = #{cohCdate,jdbcType=DATE},
+      </if>
+      <if test="cohCtime != null">
+        coh_ctime = #{cohCtime,jdbcType=TIME},
+      </if>
+      <if test="cohCtimestamp != null">
+        coh_ctimestamp = #{cohCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cohUdate != null">
+        coh_udate = #{cohUdate,jdbcType=DATE},
+      </if>
+      <if test="cohUtime != null">
+        coh_utime = #{cohUtime,jdbcType=TIME},
+      </if>
+      <if test="cohUtimestamp != null">
+        coh_utimestamp = #{cohUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        version_no = #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="cohUpdateUser != null">
+        coh_update_user = #{cohUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="cohUpdateSysName != null">
+        coh_update_sys_name = #{cohUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="cohUpdateClassName != null">
+        coh_update_class_name = #{cohUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="cohUpdateMethodName != null">
+        coh_update_method_name = #{cohUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="cohUpdateCrudKbn != null">
+        coh_update_crud_kbn = #{cohUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="cohSysRemarks != null">
+        coh_sys_remarks = #{cohSysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="cohBefId != null">
+        coh_bef_id = #{cohBefId,jdbcType=BIGINT},
+      </if>
+      <if test="cohReservStrTime != null">
+        coh_reserv_str_time = #{cohReservStrTime,jdbcType=TIME},
+      </if>
+      <if test="cohReservEndTime != null">
+        coh_reserv_end_time = #{cohReservEndTime,jdbcType=TIME},
+      </if>
+      <if test="cohRaitenKaisu != null">
+        coh_raiten_kaisu = #{cohRaitenKaisu,jdbcType=NUMERIC},
+      </if>
+      <if test="cohRaitenKankaku != null">
+        coh_raiten_kankaku = #{cohRaitenKankaku,jdbcType=NUMERIC},
+      </if>
+      <if test="cohReceiptRemarks != null">
+        coh_receipt_remarks = #{cohReceiptRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="cohKaijyoRemarks != null">
+        coh_kaijyo_remarks = #{cohKaijyoRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="cohExptFinishTime != null">
+        coh_expt_finish_time = #{cohExptFinishTime,jdbcType=TIME},
+      </if>
+      <if test="cohVisitMot != null">
+        coh_visit_mot = #{cohVisitMot,jdbcType=CHAR},
+      </if>
+      <if test="cohRsvId != null">
+        coh_rsv_id = #{cohRsvId,jdbcType=BIGINT},
+      </if>
+      <if test="cohRsvRteSbt != null">
+        coh_rsv_rte_sbt = #{cohRsvRteSbt,jdbcType=CHAR},
+      </if>
+      <if test="cohRsvTel01 != null">
+        coh_rsv_tel_01 = #{cohRsvTel01,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvTel02 != null">
+        coh_rsv_tel_02 = #{cohRsvTel02,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvTel03 != null">
+        coh_rsv_tel_03 = #{cohRsvTel03,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvMlAddr != null">
+        coh_rsv_ml_addr = #{cohRsvMlAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvQstAns != null">
+        coh_rsv_qst_ans = #{cohRsvQstAns,jdbcType=VARCHAR},
+      </if>
+      <if test="cohRsvReqCns != null">
+        coh_rsv_req_cns = #{cohRsvReqCns,jdbcType=VARCHAR},
+      </if>
+      <if test="cohPrePaidPrice != null">
+        coh_pre_paid_price = #{cohPrePaidPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="cohSeatId != null">
+        coh_seat_id = #{cohSeatId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where coh_id = #{cohId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFil">
+    update chkout_hdr_fil
+    set coh_sts_kbn = #{cohStsKbn,jdbcType=CHAR},
+      coh_date = #{cohDate,jdbcType=DATE},
+      coh_ent_time = #{cohEntTime,jdbcType=TIME},
+      coh_wait_time = #{cohWaitTime,jdbcType=NUMERIC},
+      coh_str_time = #{cohStrTime,jdbcType=TIME},
+      coh_end_time = #{cohEndTime,jdbcType=TIME},
+      coh_shp_id = #{cohShpId,jdbcType=BIGINT},
+      coh_cst_id = #{cohCstId,jdbcType=BIGINT},
+      coh_stf_id = #{cohStfId,jdbcType=BIGINT},
+      coh_apnt_flg = #{cohApntFlg,jdbcType=CHAR},
+      coh_cst_kbn = #{cohCstKbn,jdbcType=CHAR},
+      coh_tag_no = #{cohTagNo,jdbcType=VARCHAR},
+      coh_total_price = #{cohTotalPrice,jdbcType=NUMERIC},
+      coh_total_tax = #{cohTotalTax,jdbcType=NUMERIC},
+      coh_remarks = #{cohRemarks,jdbcType=VARCHAR},
+      coh_avl_date_fr = #{cohAvlDateFr,jdbcType=DATE},
+      coh_avl_date_to = #{cohAvlDateTo,jdbcType=DATE},
+      coh_del_flg = #{cohDelFlg,jdbcType=CHAR},
+      coh_cdate = #{cohCdate,jdbcType=DATE},
+      coh_ctime = #{cohCtime,jdbcType=TIME},
+      coh_ctimestamp = #{cohCtimestamp,jdbcType=TIMESTAMP},
+      coh_udate = #{cohUdate,jdbcType=DATE},
+      coh_utime = #{cohUtime,jdbcType=TIME},
+      coh_utimestamp = #{cohUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{versionNo,jdbcType=BIGINT},
+      coh_update_user = #{cohUpdateUser,jdbcType=BIGINT},
+      coh_update_sys_name = #{cohUpdateSysName,jdbcType=VARCHAR},
+      coh_update_class_name = #{cohUpdateClassName,jdbcType=VARCHAR},
+      coh_update_method_name = #{cohUpdateMethodName,jdbcType=VARCHAR},
+      coh_update_crud_kbn = #{cohUpdateCrudKbn,jdbcType=CHAR},
+      coh_sys_remarks = #{cohSysRemarks,jdbcType=VARCHAR},
+      coh_bef_id = #{cohBefId,jdbcType=BIGINT},
+      coh_reserv_str_time = #{cohReservStrTime,jdbcType=TIME},
+      coh_reserv_end_time = #{cohReservEndTime,jdbcType=TIME},
+      coh_raiten_kaisu = #{cohRaitenKaisu,jdbcType=NUMERIC},
+      coh_raiten_kankaku = #{cohRaitenKankaku,jdbcType=NUMERIC},
+      coh_receipt_remarks = #{cohReceiptRemarks,jdbcType=VARCHAR},
+      coh_kaijyo_remarks = #{cohKaijyoRemarks,jdbcType=VARCHAR},
+      coh_expt_finish_time = #{cohExptFinishTime,jdbcType=TIME},
+      coh_visit_mot = #{cohVisitMot,jdbcType=CHAR},
+      coh_rsv_id = #{cohRsvId,jdbcType=BIGINT},
+      coh_rsv_rte_sbt = #{cohRsvRteSbt,jdbcType=CHAR},
+      coh_rsv_tel_01 = #{cohRsvTel01,jdbcType=VARCHAR},
+      coh_rsv_tel_02 = #{cohRsvTel02,jdbcType=VARCHAR},
+      coh_rsv_tel_03 = #{cohRsvTel03,jdbcType=VARCHAR},
+      coh_rsv_ml_addr = #{cohRsvMlAddr,jdbcType=VARCHAR},
+      coh_rsv_qst_ans = #{cohRsvQstAns,jdbcType=VARCHAR},
+      coh_rsv_req_cns = #{cohRsvReqCns,jdbcType=VARCHAR},
+      coh_pre_paid_price = #{cohPrePaidPrice,jdbcType=NUMERIC},
+      coh_seat_id = #{cohSeatId,jdbcType=BIGINT}
+    where coh_id = #{cohId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFilCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from chkout_hdr_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectOneByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFilCriteria" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from chkout_hdr_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>

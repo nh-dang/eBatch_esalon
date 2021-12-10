@@ -106,8 +106,14 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 
-		<table tableName="user_mst" />
-
+		<table tableName="chkout_hdr_fil" />
+		<table tableName="group_mst" />
+		<table tableName="layout_mst" />
+		<table tableName="shop_mst" />
+		<table tableName="seat_mst" />
+		<table tableName="signage_mst" />
+		<table tableName="signage_shp_fil" />
+		
 	</context>
 
 

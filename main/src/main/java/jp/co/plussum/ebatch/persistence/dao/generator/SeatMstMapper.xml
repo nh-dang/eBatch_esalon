@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plussum.ebatch.persistence.dao.generator.SeatMstMapper">
+  <resultMap id="BaseResultMap" type="jp.co.plussum.ebatch.domain.entity.generator.SeatMst">
+    <id column="seat_id" jdbcType="BIGINT" property="seatId" />
+    <result column="seat_shp_id" jdbcType="BIGINT" property="seatShpId" />
+    <result column="seat_name" jdbcType="VARCHAR" property="seatName" />
+    <result column="seat_sort" jdbcType="INTEGER" property="seatSort" />
+    <result column="seat_del_flg" jdbcType="CHAR" property="seatDelFlg" />
+    <result column="seat_cdate" jdbcType="DATE" property="seatCdate" />
+    <result column="seat_ctime" jdbcType="TIME" property="seatCtime" />
+    <result column="seat_ctimestamp" jdbcType="TIMESTAMP" property="seatCtimestamp" />
+    <result column="seat_udate" jdbcType="DATE" property="seatUdate" />
+    <result column="seat_utime" jdbcType="TIME" property="seatUtime" />
+    <result column="seat_utimestamp" jdbcType="TIMESTAMP" property="seatUtimestamp" />
+    <result column="version_no" jdbcType="BIGINT" property="versionNo" />
+    <result column="seat_update_user" jdbcType="BIGINT" property="seatUpdateUser" />
+    <result column="seat_update_sys_name" jdbcType="VARCHAR" property="seatUpdateSysName" />
+    <result column="seat_update_class_name" jdbcType="VARCHAR" property="seatUpdateClassName" />
+    <result column="seat_update_method_name" jdbcType="VARCHAR" property="seatUpdateMethodName" />
+    <result column="seat_update_crud_kbn" jdbcType="CHAR" property="seatUpdateCrudKbn" />
+    <result column="seat_sys_remarks" jdbcType="VARCHAR" property="seatSysRemarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    seat_id, seat_shp_id, seat_name, seat_sort, seat_del_flg, seat_cdate, seat_ctime, 
+    seat_ctimestamp, seat_udate, seat_utime, seat_utimestamp, version_no, seat_update_user, 
+    seat_update_sys_name, seat_update_class_name, seat_update_method_name, seat_update_crud_kbn, 
+    seat_sys_remarks
+  </sql>
+  <select id="selectByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SeatMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from seat_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from seat_mst
+    where seat_id = #{seatId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from seat_mst
+    where seat_id = #{seatId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SeatMstCriteria">
+    delete from seat_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SeatMst">
+    insert into seat_mst (seat_id, seat_shp_id, seat_name, 
+      seat_sort, seat_del_flg, seat_cdate, 
+      seat_ctime, seat_ctimestamp, seat_udate, 
+      seat_utime, seat_utimestamp, version_no, 
+      seat_update_user, seat_update_sys_name, seat_update_class_name, 
+      seat_update_method_name, seat_update_crud_kbn, seat_sys_remarks
+      )
+    values (#{seatId,jdbcType=BIGINT}, #{seatShpId,jdbcType=BIGINT}, #{seatName,jdbcType=VARCHAR}, 
+      #{seatSort,jdbcType=INTEGER}, #{seatDelFlg,jdbcType=CHAR}, #{seatCdate,jdbcType=DATE}, 
+      #{seatCtime,jdbcType=TIME}, #{seatCtimestamp,jdbcType=TIMESTAMP}, #{seatUdate,jdbcType=DATE}, 
+      #{seatUtime,jdbcType=TIME}, #{seatUtimestamp,jdbcType=TIMESTAMP}, #{versionNo,jdbcType=BIGINT}, 
+      #{seatUpdateUser,jdbcType=BIGINT}, #{seatUpdateSysName,jdbcType=VARCHAR}, #{seatUpdateClassName,jdbcType=VARCHAR}, 
+      #{seatUpdateMethodName,jdbcType=VARCHAR}, #{seatUpdateCrudKbn,jdbcType=CHAR}, #{seatSysRemarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SeatMst">
+    insert into seat_mst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seatId != null">
+        seat_id,
+      </if>
+      <if test="seatShpId != null">
+        seat_shp_id,
+      </if>
+      <if test="seatName != null">
+        seat_name,
+      </if>
+      <if test="seatSort != null">
+        seat_sort,
+      </if>
+      <if test="seatDelFlg != null">
+        seat_del_flg,
+      </if>
+      <if test="seatCdate != null">
+        seat_cdate,
+      </if>
+      <if test="seatCtime != null">
+        seat_ctime,
+      </if>
+      <if test="seatCtimestamp != null">
+        seat_ctimestamp,
+      </if>
+      <if test="seatUdate != null">
+        seat_udate,
+      </if>
+      <if test="seatUtime != null">
+        seat_utime,
+      </if>
+      <if test="seatUtimestamp != null">
+        seat_utimestamp,
+      </if>
+      <if test="versionNo != null">
+        version_no,
+      </if>
+      <if test="seatUpdateUser != null">
+        seat_update_user,
+      </if>
+      <if test="seatUpdateSysName != null">
+        seat_update_sys_name,
+      </if>
+      <if test="seatUpdateClassName != null">
+        seat_update_class_name,
+      </if>
+      <if test="seatUpdateMethodName != null">
+        seat_update_method_name,
+      </if>
+      <if test="seatUpdateCrudKbn != null">
+        seat_update_crud_kbn,
+      </if>
+      <if test="seatSysRemarks != null">
+        seat_sys_remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seatId != null">
+        #{seatId,jdbcType=BIGINT},
+      </if>
+      <if test="seatShpId != null">
+        #{seatShpId,jdbcType=BIGINT},
+      </if>
+      <if test="seatName != null">
+        #{seatName,jdbcType=VARCHAR},
+      </if>
+      <if test="seatSort != null">
+        #{seatSort,jdbcType=INTEGER},
+      </if>
+      <if test="seatDelFlg != null">
+        #{seatDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="seatCdate != null">
+        #{seatCdate,jdbcType=DATE},
+      </if>
+      <if test="seatCtime != null">
+        #{seatCtime,jdbcType=TIME},
+      </if>
+      <if test="seatCtimestamp != null">
+        #{seatCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seatUdate != null">
+        #{seatUdate,jdbcType=DATE},
+      </if>
+      <if test="seatUtime != null">
+        #{seatUtime,jdbcType=TIME},
+      </if>
+      <if test="seatUtimestamp != null">
+        #{seatUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="seatUpdateUser != null">
+        #{seatUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="seatUpdateSysName != null">
+        #{seatUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="seatUpdateClassName != null">
+        #{seatUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="seatUpdateMethodName != null">
+        #{seatUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="seatUpdateCrudKbn != null">
+        #{seatUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="seatSysRemarks != null">
+        #{seatSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SeatMstCriteria" resultType="java.lang.Long">
+    select count(*) from seat_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update seat_mst
+    <set>
+      <if test="record.seatId != null">
+        seat_id = #{record.seatId,jdbcType=BIGINT},
+      </if>
+      <if test="record.seatShpId != null">
+        seat_shp_id = #{record.seatShpId,jdbcType=BIGINT},
+      </if>
+      <if test="record.seatName != null">
+        seat_name = #{record.seatName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seatSort != null">
+        seat_sort = #{record.seatSort,jdbcType=INTEGER},
+      </if>
+      <if test="record.seatDelFlg != null">
+        seat_del_flg = #{record.seatDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="record.seatCdate != null">
+        seat_cdate = #{record.seatCdate,jdbcType=DATE},
+      </if>
+      <if test="record.seatCtime != null">
+        seat_ctime = #{record.seatCtime,jdbcType=TIME},
+      </if>
+      <if test="record.seatCtimestamp != null">
+        seat_ctimestamp = #{record.seatCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.seatUdate != null">
+        seat_udate = #{record.seatUdate,jdbcType=DATE},
+      </if>
+      <if test="record.seatUtime != null">
+        seat_utime = #{record.seatUtime,jdbcType=TIME},
+      </if>
+      <if test="record.seatUtimestamp != null">
+        seat_utimestamp = #{record.seatUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.versionNo != null">
+        version_no = #{record.versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="record.seatUpdateUser != null">
+        seat_update_user = #{record.seatUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.seatUpdateSysName != null">
+        seat_update_sys_name = #{record.seatUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seatUpdateClassName != null">
+        seat_update_class_name = #{record.seatUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seatUpdateMethodName != null">
+        seat_update_method_name = #{record.seatUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seatUpdateCrudKbn != null">
+        seat_update_crud_kbn = #{record.seatUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="record.seatSysRemarks != null">
+        seat_sys_remarks = #{record.seatSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update seat_mst
+    set seat_id = #{record.seatId,jdbcType=BIGINT},
+      seat_shp_id = #{record.seatShpId,jdbcType=BIGINT},
+      seat_name = #{record.seatName,jdbcType=VARCHAR},
+      seat_sort = #{record.seatSort,jdbcType=INTEGER},
+      seat_del_flg = #{record.seatDelFlg,jdbcType=CHAR},
+      seat_cdate = #{record.seatCdate,jdbcType=DATE},
+      seat_ctime = #{record.seatCtime,jdbcType=TIME},
+      seat_ctimestamp = #{record.seatCtimestamp,jdbcType=TIMESTAMP},
+      seat_udate = #{record.seatUdate,jdbcType=DATE},
+      seat_utime = #{record.seatUtime,jdbcType=TIME},
+      seat_utimestamp = #{record.seatUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{record.versionNo,jdbcType=BIGINT},
+      seat_update_user = #{record.seatUpdateUser,jdbcType=BIGINT},
+      seat_update_sys_name = #{record.seatUpdateSysName,jdbcType=VARCHAR},
+      seat_update_class_name = #{record.seatUpdateClassName,jdbcType=VARCHAR},
+      seat_update_method_name = #{record.seatUpdateMethodName,jdbcType=VARCHAR},
+      seat_update_crud_kbn = #{record.seatUpdateCrudKbn,jdbcType=CHAR},
+      seat_sys_remarks = #{record.seatSysRemarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SeatMst">
+    update seat_mst
+    <set>
+      <if test="seatShpId != null">
+        seat_shp_id = #{seatShpId,jdbcType=BIGINT},
+      </if>
+      <if test="seatName != null">
+        seat_name = #{seatName,jdbcType=VARCHAR},
+      </if>
+      <if test="seatSort != null">
+        seat_sort = #{seatSort,jdbcType=INTEGER},
+      </if>
+      <if test="seatDelFlg != null">
+        seat_del_flg = #{seatDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="seatCdate != null">
+        seat_cdate = #{seatCdate,jdbcType=DATE},
+      </if>
+      <if test="seatCtime != null">
+        seat_ctime = #{seatCtime,jdbcType=TIME},
+      </if>
+      <if test="seatCtimestamp != null">
+        seat_ctimestamp = #{seatCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seatUdate != null">
+        seat_udate = #{seatUdate,jdbcType=DATE},
+      </if>
+      <if test="seatUtime != null">
+        seat_utime = #{seatUtime,jdbcType=TIME},
+      </if>
+      <if test="seatUtimestamp != null">
+        seat_utimestamp = #{seatUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        version_no = #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="seatUpdateUser != null">
+        seat_update_user = #{seatUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="seatUpdateSysName != null">
+        seat_update_sys_name = #{seatUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="seatUpdateClassName != null">
+        seat_update_class_name = #{seatUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="seatUpdateMethodName != null">
+        seat_update_method_name = #{seatUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="seatUpdateCrudKbn != null">
+        seat_update_crud_kbn = #{seatUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="seatSysRemarks != null">
+        seat_sys_remarks = #{seatSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seat_id = #{seatId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SeatMst">
+    update seat_mst
+    set seat_shp_id = #{seatShpId,jdbcType=BIGINT},
+      seat_name = #{seatName,jdbcType=VARCHAR},
+      seat_sort = #{seatSort,jdbcType=INTEGER},
+      seat_del_flg = #{seatDelFlg,jdbcType=CHAR},
+      seat_cdate = #{seatCdate,jdbcType=DATE},
+      seat_ctime = #{seatCtime,jdbcType=TIME},
+      seat_ctimestamp = #{seatCtimestamp,jdbcType=TIMESTAMP},
+      seat_udate = #{seatUdate,jdbcType=DATE},
+      seat_utime = #{seatUtime,jdbcType=TIME},
+      seat_utimestamp = #{seatUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{versionNo,jdbcType=BIGINT},
+      seat_update_user = #{seatUpdateUser,jdbcType=BIGINT},
+      seat_update_sys_name = #{seatUpdateSysName,jdbcType=VARCHAR},
+      seat_update_class_name = #{seatUpdateClassName,jdbcType=VARCHAR},
+      seat_update_method_name = #{seatUpdateMethodName,jdbcType=VARCHAR},
+      seat_update_crud_kbn = #{seatUpdateCrudKbn,jdbcType=CHAR},
+      seat_sys_remarks = #{seatSysRemarks,jdbcType=VARCHAR}
+    where seat_id = #{seatId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SeatMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from seat_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectOneByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SeatMstCriteria" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from seat_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>

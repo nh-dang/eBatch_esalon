@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plussum.ebatch.persistence.dao.generator.SignageMstMapper">
+  <resultMap id="BaseResultMap" type="jp.co.plussum.ebatch.domain.entity.generator.SignageMst">
+    <result column="sig_id" jdbcType="BIGINT" property="sigId" />
+    <result column="sig_image_path" jdbcType="CHAR" property="sigImagePath" />
+    <result column="sig_del_flg" jdbcType="CHAR" property="sigDelFlg" />
+    <result column="sig_cdate" jdbcType="DATE" property="sigCdate" />
+    <result column="sig_ctime" jdbcType="TIME" property="sigCtime" />
+    <result column="sig_ctimestamp" jdbcType="TIMESTAMP" property="sigCtimestamp" />
+    <result column="sig_udate" jdbcType="DATE" property="sigUdate" />
+    <result column="sig_utime" jdbcType="TIME" property="sigUtime" />
+    <result column="sig_utimestamp" jdbcType="TIMESTAMP" property="sigUtimestamp" />
+    <result column="version_no" jdbcType="BIGINT" property="versionNo" />
+    <result column="sig_update_user" jdbcType="BIGINT" property="sigUpdateUser" />
+    <result column="sig_update_sys_name" jdbcType="VARCHAR" property="sigUpdateSysName" />
+    <result column="sig_update_class_name" jdbcType="VARCHAR" property="sigUpdateClassName" />
+    <result column="sig_update_method_name" jdbcType="VARCHAR" property="sigUpdateMethodName" />
+    <result column="sig_update_crud_kbn" jdbcType="CHAR" property="sigUpdateCrudKbn" />
+    <result column="sig_sys_remarks" jdbcType="VARCHAR" property="sigSysRemarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    sig_id, sig_image_path, sig_del_flg, sig_cdate, sig_ctime, sig_ctimestamp, sig_udate, 
+    sig_utime, sig_utimestamp, version_no, sig_update_user, sig_update_sys_name, sig_update_class_name, 
+    sig_update_method_name, sig_update_crud_kbn, sig_sys_remarks
+  </sql>
+  <select id="selectByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from signage_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMstCriteria">
+    delete from signage_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMst">
+    insert into signage_mst (sig_id, sig_image_path, sig_del_flg, 
+      sig_cdate, sig_ctime, sig_ctimestamp, 
+      sig_udate, sig_utime, sig_utimestamp, 
+      version_no, sig_update_user, sig_update_sys_name, 
+      sig_update_class_name, sig_update_method_name, 
+      sig_update_crud_kbn, sig_sys_remarks)
+    values (#{sigId,jdbcType=BIGINT}, #{sigImagePath,jdbcType=CHAR}, #{sigDelFlg,jdbcType=CHAR}, 
+      #{sigCdate,jdbcType=DATE}, #{sigCtime,jdbcType=TIME}, #{sigCtimestamp,jdbcType=TIMESTAMP}, 
+      #{sigUdate,jdbcType=DATE}, #{sigUtime,jdbcType=TIME}, #{sigUtimestamp,jdbcType=TIMESTAMP}, 
+      #{versionNo,jdbcType=BIGINT}, #{sigUpdateUser,jdbcType=BIGINT}, #{sigUpdateSysName,jdbcType=VARCHAR}, 
+      #{sigUpdateClassName,jdbcType=VARCHAR}, #{sigUpdateMethodName,jdbcType=VARCHAR}, 
+      #{sigUpdateCrudKbn,jdbcType=CHAR}, #{sigSysRemarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMst">
+    insert into signage_mst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sigId != null">
+        sig_id,
+      </if>
+      <if test="sigImagePath != null">
+        sig_image_path,
+      </if>
+      <if test="sigDelFlg != null">
+        sig_del_flg,
+      </if>
+      <if test="sigCdate != null">
+        sig_cdate,
+      </if>
+      <if test="sigCtime != null">
+        sig_ctime,
+      </if>
+      <if test="sigCtimestamp != null">
+        sig_ctimestamp,
+      </if>
+      <if test="sigUdate != null">
+        sig_udate,
+      </if>
+      <if test="sigUtime != null">
+        sig_utime,
+      </if>
+      <if test="sigUtimestamp != null">
+        sig_utimestamp,
+      </if>
+      <if test="versionNo != null">
+        version_no,
+      </if>
+      <if test="sigUpdateUser != null">
+        sig_update_user,
+      </if>
+      <if test="sigUpdateSysName != null">
+        sig_update_sys_name,
+      </if>
+      <if test="sigUpdateClassName != null">
+        sig_update_class_name,
+      </if>
+      <if test="sigUpdateMethodName != null">
+        sig_update_method_name,
+      </if>
+      <if test="sigUpdateCrudKbn != null">
+        sig_update_crud_kbn,
+      </if>
+      <if test="sigSysRemarks != null">
+        sig_sys_remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sigId != null">
+        #{sigId,jdbcType=BIGINT},
+      </if>
+      <if test="sigImagePath != null">
+        #{sigImagePath,jdbcType=CHAR},
+      </if>
+      <if test="sigDelFlg != null">
+        #{sigDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="sigCdate != null">
+        #{sigCdate,jdbcType=DATE},
+      </if>
+      <if test="sigCtime != null">
+        #{sigCtime,jdbcType=TIME},
+      </if>
+      <if test="sigCtimestamp != null">
+        #{sigCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sigUdate != null">
+        #{sigUdate,jdbcType=DATE},
+      </if>
+      <if test="sigUtime != null">
+        #{sigUtime,jdbcType=TIME},
+      </if>
+      <if test="sigUtimestamp != null">
+        #{sigUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="sigUpdateUser != null">
+        #{sigUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="sigUpdateSysName != null">
+        #{sigUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="sigUpdateClassName != null">
+        #{sigUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="sigUpdateMethodName != null">
+        #{sigUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="sigUpdateCrudKbn != null">
+        #{sigUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="sigSysRemarks != null">
+        #{sigSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMstCriteria" resultType="java.lang.Long">
+    select count(*) from signage_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update signage_mst
+    <set>
+      <if test="record.sigId != null">
+        sig_id = #{record.sigId,jdbcType=BIGINT},
+      </if>
+      <if test="record.sigImagePath != null">
+        sig_image_path = #{record.sigImagePath,jdbcType=CHAR},
+      </if>
+      <if test="record.sigDelFlg != null">
+        sig_del_flg = #{record.sigDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="record.sigCdate != null">
+        sig_cdate = #{record.sigCdate,jdbcType=DATE},
+      </if>
+      <if test="record.sigCtime != null">
+        sig_ctime = #{record.sigCtime,jdbcType=TIME},
+      </if>
+      <if test="record.sigCtimestamp != null">
+        sig_ctimestamp = #{record.sigCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sigUdate != null">
+        sig_udate = #{record.sigUdate,jdbcType=DATE},
+      </if>
+      <if test="record.sigUtime != null">
+        sig_utime = #{record.sigUtime,jdbcType=TIME},
+      </if>
+      <if test="record.sigUtimestamp != null">
+        sig_utimestamp = #{record.sigUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.versionNo != null">
+        version_no = #{record.versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="record.sigUpdateUser != null">
+        sig_update_user = #{record.sigUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.sigUpdateSysName != null">
+        sig_update_sys_name = #{record.sigUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sigUpdateClassName != null">
+        sig_update_class_name = #{record.sigUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sigUpdateMethodName != null">
+        sig_update_method_name = #{record.sigUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sigUpdateCrudKbn != null">
+        sig_update_crud_kbn = #{record.sigUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="record.sigSysRemarks != null">
+        sig_sys_remarks = #{record.sigSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update signage_mst
+    set sig_id = #{record.sigId,jdbcType=BIGINT},
+      sig_image_path = #{record.sigImagePath,jdbcType=CHAR},
+      sig_del_flg = #{record.sigDelFlg,jdbcType=CHAR},
+      sig_cdate = #{record.sigCdate,jdbcType=DATE},
+      sig_ctime = #{record.sigCtime,jdbcType=TIME},
+      sig_ctimestamp = #{record.sigCtimestamp,jdbcType=TIMESTAMP},
+      sig_udate = #{record.sigUdate,jdbcType=DATE},
+      sig_utime = #{record.sigUtime,jdbcType=TIME},
+      sig_utimestamp = #{record.sigUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{record.versionNo,jdbcType=BIGINT},
+      sig_update_user = #{record.sigUpdateUser,jdbcType=BIGINT},
+      sig_update_sys_name = #{record.sigUpdateSysName,jdbcType=VARCHAR},
+      sig_update_class_name = #{record.sigUpdateClassName,jdbcType=VARCHAR},
+      sig_update_method_name = #{record.sigUpdateMethodName,jdbcType=VARCHAR},
+      sig_update_crud_kbn = #{record.sigUpdateCrudKbn,jdbcType=CHAR},
+      sig_sys_remarks = #{record.sigSysRemarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from signage_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectOneByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMstCriteria" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from signage_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>

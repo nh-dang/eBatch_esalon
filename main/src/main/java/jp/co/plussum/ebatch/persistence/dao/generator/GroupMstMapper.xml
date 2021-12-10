@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plussum.ebatch.persistence.dao.generator.GroupMstMapper">
+  <resultMap id="BaseResultMap" type="jp.co.plussum.ebatch.domain.entity.generator.GroupMst">
+    <id column="grp_id" jdbcType="BIGINT" property="grpId" />
+    <result column="grp_cd" jdbcType="VARCHAR" property="grpCd" />
+    <result column="grp_name" jdbcType="VARCHAR" property="grpName" />
+    <result column="grp_name_kn" jdbcType="VARCHAR" property="grpNameKn" />
+    <result column="grp_hdr_com_id" jdbcType="BIGINT" property="grpHdrComId" />
+    <result column="grp_remarks" jdbcType="VARCHAR" property="grpRemarks" />
+    <result column="grp_avl_date_fr" jdbcType="DATE" property="grpAvlDateFr" />
+    <result column="grp_avl_date_to" jdbcType="DATE" property="grpAvlDateTo" />
+    <result column="grp_del_flg" jdbcType="CHAR" property="grpDelFlg" />
+    <result column="grp_cdate" jdbcType="DATE" property="grpCdate" />
+    <result column="grp_ctime" jdbcType="TIME" property="grpCtime" />
+    <result column="grp_ctimestamp" jdbcType="TIMESTAMP" property="grpCtimestamp" />
+    <result column="grp_udate" jdbcType="DATE" property="grpUdate" />
+    <result column="grp_utime" jdbcType="TIME" property="grpUtime" />
+    <result column="grp_utimestamp" jdbcType="TIMESTAMP" property="grpUtimestamp" />
+    <result column="version_no" jdbcType="BIGINT" property="versionNo" />
+    <result column="grp_update_user" jdbcType="BIGINT" property="grpUpdateUser" />
+    <result column="grp_update_sys_name" jdbcType="VARCHAR" property="grpUpdateSysName" />
+    <result column="grp_update_class_name" jdbcType="VARCHAR" property="grpUpdateClassName" />
+    <result column="grp_update_method_name" jdbcType="VARCHAR" property="grpUpdateMethodName" />
+    <result column="grp_update_crud_kbn" jdbcType="CHAR" property="grpUpdateCrudKbn" />
+    <result column="grp_sys_remarks" jdbcType="VARCHAR" property="grpSysRemarks" />
+    <result column="grp_update_admin" jdbcType="BIGINT" property="grpUpdateAdmin" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    grp_id, grp_cd, grp_name, grp_name_kn, grp_hdr_com_id, grp_remarks, grp_avl_date_fr, 
+    grp_avl_date_to, grp_del_flg, grp_cdate, grp_ctime, grp_ctimestamp, grp_udate, grp_utime, 
+    grp_utimestamp, version_no, grp_update_user, grp_update_sys_name, grp_update_class_name, 
+    grp_update_method_name, grp_update_crud_kbn, grp_sys_remarks, grp_update_admin
+  </sql>
+  <select id="selectByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.GroupMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from group_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from group_mst
+    where grp_id = #{grpId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from group_mst
+    where grp_id = #{grpId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.GroupMstCriteria">
+    delete from group_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="jp.co.plussum.ebatch.domain.entity.generator.GroupMst">
+    insert into group_mst (grp_id, grp_cd, grp_name, 
+      grp_name_kn, grp_hdr_com_id, grp_remarks, 
+      grp_avl_date_fr, grp_avl_date_to, grp_del_flg, 
+      grp_cdate, grp_ctime, grp_ctimestamp, 
+      grp_udate, grp_utime, grp_utimestamp, 
+      version_no, grp_update_user, grp_update_sys_name, 
+      grp_update_class_name, grp_update_method_name, 
+      grp_update_crud_kbn, grp_sys_remarks, grp_update_admin
+      )
+    values (#{grpId,jdbcType=BIGINT}, #{grpCd,jdbcType=VARCHAR}, #{grpName,jdbcType=VARCHAR}, 
+      #{grpNameKn,jdbcType=VARCHAR}, #{grpHdrComId,jdbcType=BIGINT}, #{grpRemarks,jdbcType=VARCHAR}, 
+      #{grpAvlDateFr,jdbcType=DATE}, #{grpAvlDateTo,jdbcType=DATE}, #{grpDelFlg,jdbcType=CHAR}, 
+      #{grpCdate,jdbcType=DATE}, #{grpCtime,jdbcType=TIME}, #{grpCtimestamp,jdbcType=TIMESTAMP}, 
+      #{grpUdate,jdbcType=DATE}, #{grpUtime,jdbcType=TIME}, #{grpUtimestamp,jdbcType=TIMESTAMP}, 
+      #{versionNo,jdbcType=BIGINT}, #{grpUpdateUser,jdbcType=BIGINT}, #{grpUpdateSysName,jdbcType=VARCHAR}, 
+      #{grpUpdateClassName,jdbcType=VARCHAR}, #{grpUpdateMethodName,jdbcType=VARCHAR}, 
+      #{grpUpdateCrudKbn,jdbcType=CHAR}, #{grpSysRemarks,jdbcType=VARCHAR}, #{grpUpdateAdmin,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.GroupMst">
+    insert into group_mst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="grpId != null">
+        grp_id,
+      </if>
+      <if test="grpCd != null">
+        grp_cd,
+      </if>
+      <if test="grpName != null">
+        grp_name,
+      </if>
+      <if test="grpNameKn != null">
+        grp_name_kn,
+      </if>
+      <if test="grpHdrComId != null">
+        grp_hdr_com_id,
+      </if>
+      <if test="grpRemarks != null">
+        grp_remarks,
+      </if>
+      <if test="grpAvlDateFr != null">
+        grp_avl_date_fr,
+      </if>
+      <if test="grpAvlDateTo != null">
+        grp_avl_date_to,
+      </if>
+      <if test="grpDelFlg != null">
+        grp_del_flg,
+      </if>
+      <if test="grpCdate != null">
+        grp_cdate,
+      </if>
+      <if test="grpCtime != null">
+        grp_ctime,
+      </if>
+      <if test="grpCtimestamp != null">
+        grp_ctimestamp,
+      </if>
+      <if test="grpUdate != null">
+        grp_udate,
+      </if>
+      <if test="grpUtime != null">
+        grp_utime,
+      </if>
+      <if test="grpUtimestamp != null">
+        grp_utimestamp,
+      </if>
+      <if test="versionNo != null">
+        version_no,
+      </if>
+      <if test="grpUpdateUser != null">
+        grp_update_user,
+      </if>
+      <if test="grpUpdateSysName != null">
+        grp_update_sys_name,
+      </if>
+      <if test="grpUpdateClassName != null">
+        grp_update_class_name,
+      </if>
+      <if test="grpUpdateMethodName != null">
+        grp_update_method_name,
+      </if>
+      <if test="grpUpdateCrudKbn != null">
+        grp_update_crud_kbn,
+      </if>
+      <if test="grpSysRemarks != null">
+        grp_sys_remarks,
+      </if>
+      <if test="grpUpdateAdmin != null">
+        grp_update_admin,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="grpId != null">
+        #{grpId,jdbcType=BIGINT},
+      </if>
+      <if test="grpCd != null">
+        #{grpCd,jdbcType=VARCHAR},
+      </if>
+      <if test="grpName != null">
+        #{grpName,jdbcType=VARCHAR},
+      </if>
+      <if test="grpNameKn != null">
+        #{grpNameKn,jdbcType=VARCHAR},
+      </if>
+      <if test="grpHdrComId != null">
+        #{grpHdrComId,jdbcType=BIGINT},
+      </if>
+      <if test="grpRemarks != null">
+        #{grpRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="grpAvlDateFr != null">
+        #{grpAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="grpAvlDateTo != null">
+        #{grpAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="grpDelFlg != null">
+        #{grpDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="grpCdate != null">
+        #{grpCdate,jdbcType=DATE},
+      </if>
+      <if test="grpCtime != null">
+        #{grpCtime,jdbcType=TIME},
+      </if>
+      <if test="grpCtimestamp != null">
+        #{grpCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grpUdate != null">
+        #{grpUdate,jdbcType=DATE},
+      </if>
+      <if test="grpUtime != null">
+        #{grpUtime,jdbcType=TIME},
+      </if>
+      <if test="grpUtimestamp != null">
+        #{grpUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="grpUpdateUser != null">
+        #{grpUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="grpUpdateSysName != null">
+        #{grpUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="grpUpdateClassName != null">
+        #{grpUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="grpUpdateMethodName != null">
+        #{grpUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="grpUpdateCrudKbn != null">
+        #{grpUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="grpSysRemarks != null">
+        #{grpSysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="grpUpdateAdmin != null">
+        #{grpUpdateAdmin,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.GroupMstCriteria" resultType="java.lang.Long">
+    select count(*) from group_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update group_mst
+    <set>
+      <if test="record.grpId != null">
+        grp_id = #{record.grpId,jdbcType=BIGINT},
+      </if>
+      <if test="record.grpCd != null">
+        grp_cd = #{record.grpCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grpName != null">
+        grp_name = #{record.grpName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grpNameKn != null">
+        grp_name_kn = #{record.grpNameKn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grpHdrComId != null">
+        grp_hdr_com_id = #{record.grpHdrComId,jdbcType=BIGINT},
+      </if>
+      <if test="record.grpRemarks != null">
+        grp_remarks = #{record.grpRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grpAvlDateFr != null">
+        grp_avl_date_fr = #{record.grpAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="record.grpAvlDateTo != null">
+        grp_avl_date_to = #{record.grpAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="record.grpDelFlg != null">
+        grp_del_flg = #{record.grpDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="record.grpCdate != null">
+        grp_cdate = #{record.grpCdate,jdbcType=DATE},
+      </if>
+      <if test="record.grpCtime != null">
+        grp_ctime = #{record.grpCtime,jdbcType=TIME},
+      </if>
+      <if test="record.grpCtimestamp != null">
+        grp_ctimestamp = #{record.grpCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.grpUdate != null">
+        grp_udate = #{record.grpUdate,jdbcType=DATE},
+      </if>
+      <if test="record.grpUtime != null">
+        grp_utime = #{record.grpUtime,jdbcType=TIME},
+      </if>
+      <if test="record.grpUtimestamp != null">
+        grp_utimestamp = #{record.grpUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.versionNo != null">
+        version_no = #{record.versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="record.grpUpdateUser != null">
+        grp_update_user = #{record.grpUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.grpUpdateSysName != null">
+        grp_update_sys_name = #{record.grpUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grpUpdateClassName != null">
+        grp_update_class_name = #{record.grpUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grpUpdateMethodName != null">
+        grp_update_method_name = #{record.grpUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grpUpdateCrudKbn != null">
+        grp_update_crud_kbn = #{record.grpUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="record.grpSysRemarks != null">
+        grp_sys_remarks = #{record.grpSysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grpUpdateAdmin != null">
+        grp_update_admin = #{record.grpUpdateAdmin,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update group_mst
+    set grp_id = #{record.grpId,jdbcType=BIGINT},
+      grp_cd = #{record.grpCd,jdbcType=VARCHAR},
+      grp_name = #{record.grpName,jdbcType=VARCHAR},
+      grp_name_kn = #{record.grpNameKn,jdbcType=VARCHAR},
+      grp_hdr_com_id = #{record.grpHdrComId,jdbcType=BIGINT},
+      grp_remarks = #{record.grpRemarks,jdbcType=VARCHAR},
+      grp_avl_date_fr = #{record.grpAvlDateFr,jdbcType=DATE},
+      grp_avl_date_to = #{record.grpAvlDateTo,jdbcType=DATE},
+      grp_del_flg = #{record.grpDelFlg,jdbcType=CHAR},
+      grp_cdate = #{record.grpCdate,jdbcType=DATE},
+      grp_ctime = #{record.grpCtime,jdbcType=TIME},
+      grp_ctimestamp = #{record.grpCtimestamp,jdbcType=TIMESTAMP},
+      grp_udate = #{record.grpUdate,jdbcType=DATE},
+      grp_utime = #{record.grpUtime,jdbcType=TIME},
+      grp_utimestamp = #{record.grpUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{record.versionNo,jdbcType=BIGINT},
+      grp_update_user = #{record.grpUpdateUser,jdbcType=BIGINT},
+      grp_update_sys_name = #{record.grpUpdateSysName,jdbcType=VARCHAR},
+      grp_update_class_name = #{record.grpUpdateClassName,jdbcType=VARCHAR},
+      grp_update_method_name = #{record.grpUpdateMethodName,jdbcType=VARCHAR},
+      grp_update_crud_kbn = #{record.grpUpdateCrudKbn,jdbcType=CHAR},
+      grp_sys_remarks = #{record.grpSysRemarks,jdbcType=VARCHAR},
+      grp_update_admin = #{record.grpUpdateAdmin,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.GroupMst">
+    update group_mst
+    <set>
+      <if test="grpCd != null">
+        grp_cd = #{grpCd,jdbcType=VARCHAR},
+      </if>
+      <if test="grpName != null">
+        grp_name = #{grpName,jdbcType=VARCHAR},
+      </if>
+      <if test="grpNameKn != null">
+        grp_name_kn = #{grpNameKn,jdbcType=VARCHAR},
+      </if>
+      <if test="grpHdrComId != null">
+        grp_hdr_com_id = #{grpHdrComId,jdbcType=BIGINT},
+      </if>
+      <if test="grpRemarks != null">
+        grp_remarks = #{grpRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="grpAvlDateFr != null">
+        grp_avl_date_fr = #{grpAvlDateFr,jdbcType=DATE},
+      </if>
+      <if test="grpAvlDateTo != null">
+        grp_avl_date_to = #{grpAvlDateTo,jdbcType=DATE},
+      </if>
+      <if test="grpDelFlg != null">
+        grp_del_flg = #{grpDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="grpCdate != null">
+        grp_cdate = #{grpCdate,jdbcType=DATE},
+      </if>
+      <if test="grpCtime != null">
+        grp_ctime = #{grpCtime,jdbcType=TIME},
+      </if>
+      <if test="grpCtimestamp != null">
+        grp_ctimestamp = #{grpCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grpUdate != null">
+        grp_udate = #{grpUdate,jdbcType=DATE},
+      </if>
+      <if test="grpUtime != null">
+        grp_utime = #{grpUtime,jdbcType=TIME},
+      </if>
+      <if test="grpUtimestamp != null">
+        grp_utimestamp = #{grpUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        version_no = #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="grpUpdateUser != null">
+        grp_update_user = #{grpUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="grpUpdateSysName != null">
+        grp_update_sys_name = #{grpUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="grpUpdateClassName != null">
+        grp_update_class_name = #{grpUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="grpUpdateMethodName != null">
+        grp_update_method_name = #{grpUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="grpUpdateCrudKbn != null">
+        grp_update_crud_kbn = #{grpUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="grpSysRemarks != null">
+        grp_sys_remarks = #{grpSysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="grpUpdateAdmin != null">
+        grp_update_admin = #{grpUpdateAdmin,jdbcType=BIGINT},
+      </if>
+    </set>
+    where grp_id = #{grpId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jp.co.plussum.ebatch.domain.entity.generator.GroupMst">
+    update group_mst
+    set grp_cd = #{grpCd,jdbcType=VARCHAR},
+      grp_name = #{grpName,jdbcType=VARCHAR},
+      grp_name_kn = #{grpNameKn,jdbcType=VARCHAR},
+      grp_hdr_com_id = #{grpHdrComId,jdbcType=BIGINT},
+      grp_remarks = #{grpRemarks,jdbcType=VARCHAR},
+      grp_avl_date_fr = #{grpAvlDateFr,jdbcType=DATE},
+      grp_avl_date_to = #{grpAvlDateTo,jdbcType=DATE},
+      grp_del_flg = #{grpDelFlg,jdbcType=CHAR},
+      grp_cdate = #{grpCdate,jdbcType=DATE},
+      grp_ctime = #{grpCtime,jdbcType=TIME},
+      grp_ctimestamp = #{grpCtimestamp,jdbcType=TIMESTAMP},
+      grp_udate = #{grpUdate,jdbcType=DATE},
+      grp_utime = #{grpUtime,jdbcType=TIME},
+      grp_utimestamp = #{grpUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{versionNo,jdbcType=BIGINT},
+      grp_update_user = #{grpUpdateUser,jdbcType=BIGINT},
+      grp_update_sys_name = #{grpUpdateSysName,jdbcType=VARCHAR},
+      grp_update_class_name = #{grpUpdateClassName,jdbcType=VARCHAR},
+      grp_update_method_name = #{grpUpdateMethodName,jdbcType=VARCHAR},
+      grp_update_crud_kbn = #{grpUpdateCrudKbn,jdbcType=CHAR},
+      grp_sys_remarks = #{grpSysRemarks,jdbcType=VARCHAR},
+      grp_update_admin = #{grpUpdateAdmin,jdbcType=BIGINT}
+    where grp_id = #{grpId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.GroupMstCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from group_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectOneByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.GroupMstCriteria" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from group_mst
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>

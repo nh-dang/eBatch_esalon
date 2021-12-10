@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plussum.ebatch.persistence.dao.generator.SignageShpFilMapper">
+  <resultMap id="BaseResultMap" type="jp.co.plussum.ebatch.domain.entity.generator.SignageShpFil">
+    <result column="ssf_id" jdbcType="BIGINT" property="ssfId" />
+    <result column="ssf_sig_id" jdbcType="BIGINT" property="ssfSigId" />
+    <result column="ssf_ship_id" jdbcType="BIGINT" property="ssfShipId" />
+    <result column="ssf_del_flg" jdbcType="CHAR" property="ssfDelFlg" />
+    <result column="ssf_cdate" jdbcType="DATE" property="ssfCdate" />
+    <result column="ssf_ctime" jdbcType="TIME" property="ssfCtime" />
+    <result column="ssf_ctimestamp" jdbcType="TIMESTAMP" property="ssfCtimestamp" />
+    <result column="ssf_udate" jdbcType="DATE" property="ssfUdate" />
+    <result column="ssf_utime" jdbcType="TIME" property="ssfUtime" />
+    <result column="ssf_utimestamp" jdbcType="TIMESTAMP" property="ssfUtimestamp" />
+    <result column="version_no" jdbcType="BIGINT" property="versionNo" />
+    <result column="ssf_update_user" jdbcType="BIGINT" property="ssfUpdateUser" />
+    <result column="ssf_update_sys_name" jdbcType="VARCHAR" property="ssfUpdateSysName" />
+    <result column="ssf_update_class_name" jdbcType="VARCHAR" property="ssfUpdateClassName" />
+    <result column="ssf_update_method_name" jdbcType="VARCHAR" property="ssfUpdateMethodName" />
+    <result column="ssf_update_crud_kbn" jdbcType="CHAR" property="ssfUpdateCrudKbn" />
+    <result column="ssf_sys_remarks" jdbcType="VARCHAR" property="ssfSysRemarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ssf_id, ssf_sig_id, ssf_ship_id, ssf_del_flg, ssf_cdate, ssf_ctime, ssf_ctimestamp, 
+    ssf_udate, ssf_utime, ssf_utimestamp, version_no, ssf_update_user, ssf_update_sys_name, 
+    ssf_update_class_name, ssf_update_method_name, ssf_update_crud_kbn, ssf_sys_remarks
+  </sql>
+  <select id="selectByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageShpFilCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from signage_shp_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageShpFilCriteria">
+    delete from signage_shp_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageShpFil">
+    insert into signage_shp_fil (ssf_id, ssf_sig_id, ssf_ship_id, 
+      ssf_del_flg, ssf_cdate, ssf_ctime, 
+      ssf_ctimestamp, ssf_udate, ssf_utime, 
+      ssf_utimestamp, version_no, ssf_update_user, 
+      ssf_update_sys_name, ssf_update_class_name, ssf_update_method_name, 
+      ssf_update_crud_kbn, ssf_sys_remarks)
+    values (#{ssfId,jdbcType=BIGINT}, #{ssfSigId,jdbcType=BIGINT}, #{ssfShipId,jdbcType=BIGINT}, 
+      #{ssfDelFlg,jdbcType=CHAR}, #{ssfCdate,jdbcType=DATE}, #{ssfCtime,jdbcType=TIME}, 
+      #{ssfCtimestamp,jdbcType=TIMESTAMP}, #{ssfUdate,jdbcType=DATE}, #{ssfUtime,jdbcType=TIME}, 
+      #{ssfUtimestamp,jdbcType=TIMESTAMP}, #{versionNo,jdbcType=BIGINT}, #{ssfUpdateUser,jdbcType=BIGINT}, 
+      #{ssfUpdateSysName,jdbcType=VARCHAR}, #{ssfUpdateClassName,jdbcType=VARCHAR}, #{ssfUpdateMethodName,jdbcType=VARCHAR}, 
+      #{ssfUpdateCrudKbn,jdbcType=CHAR}, #{ssfSysRemarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageShpFil">
+    insert into signage_shp_fil
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ssfId != null">
+        ssf_id,
+      </if>
+      <if test="ssfSigId != null">
+        ssf_sig_id,
+      </if>
+      <if test="ssfShipId != null">
+        ssf_ship_id,
+      </if>
+      <if test="ssfDelFlg != null">
+        ssf_del_flg,
+      </if>
+      <if test="ssfCdate != null">
+        ssf_cdate,
+      </if>
+      <if test="ssfCtime != null">
+        ssf_ctime,
+      </if>
+      <if test="ssfCtimestamp != null">
+        ssf_ctimestamp,
+      </if>
+      <if test="ssfUdate != null">
+        ssf_udate,
+      </if>
+      <if test="ssfUtime != null">
+        ssf_utime,
+      </if>
+      <if test="ssfUtimestamp != null">
+        ssf_utimestamp,
+      </if>
+      <if test="versionNo != null">
+        version_no,
+      </if>
+      <if test="ssfUpdateUser != null">
+        ssf_update_user,
+      </if>
+      <if test="ssfUpdateSysName != null">
+        ssf_update_sys_name,
+      </if>
+      <if test="ssfUpdateClassName != null">
+        ssf_update_class_name,
+      </if>
+      <if test="ssfUpdateMethodName != null">
+        ssf_update_method_name,
+      </if>
+      <if test="ssfUpdateCrudKbn != null">
+        ssf_update_crud_kbn,
+      </if>
+      <if test="ssfSysRemarks != null">
+        ssf_sys_remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ssfId != null">
+        #{ssfId,jdbcType=BIGINT},
+      </if>
+      <if test="ssfSigId != null">
+        #{ssfSigId,jdbcType=BIGINT},
+      </if>
+      <if test="ssfShipId != null">
+        #{ssfShipId,jdbcType=BIGINT},
+      </if>
+      <if test="ssfDelFlg != null">
+        #{ssfDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="ssfCdate != null">
+        #{ssfCdate,jdbcType=DATE},
+      </if>
+      <if test="ssfCtime != null">
+        #{ssfCtime,jdbcType=TIME},
+      </if>
+      <if test="ssfCtimestamp != null">
+        #{ssfCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ssfUdate != null">
+        #{ssfUdate,jdbcType=DATE},
+      </if>
+      <if test="ssfUtime != null">
+        #{ssfUtime,jdbcType=TIME},
+      </if>
+      <if test="ssfUtimestamp != null">
+        #{ssfUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="ssfUpdateUser != null">
+        #{ssfUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="ssfUpdateSysName != null">
+        #{ssfUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="ssfUpdateClassName != null">
+        #{ssfUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="ssfUpdateMethodName != null">
+        #{ssfUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="ssfUpdateCrudKbn != null">
+        #{ssfUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="ssfSysRemarks != null">
+        #{ssfSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageShpFilCriteria" resultType="java.lang.Long">
+    select count(*) from signage_shp_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update signage_shp_fil
+    <set>
+      <if test="record.ssfId != null">
+        ssf_id = #{record.ssfId,jdbcType=BIGINT},
+      </if>
+      <if test="record.ssfSigId != null">
+        ssf_sig_id = #{record.ssfSigId,jdbcType=BIGINT},
+      </if>
+      <if test="record.ssfShipId != null">
+        ssf_ship_id = #{record.ssfShipId,jdbcType=BIGINT},
+      </if>
+      <if test="record.ssfDelFlg != null">
+        ssf_del_flg = #{record.ssfDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="record.ssfCdate != null">
+        ssf_cdate = #{record.ssfCdate,jdbcType=DATE},
+      </if>
+      <if test="record.ssfCtime != null">
+        ssf_ctime = #{record.ssfCtime,jdbcType=TIME},
+      </if>
+      <if test="record.ssfCtimestamp != null">
+        ssf_ctimestamp = #{record.ssfCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ssfUdate != null">
+        ssf_udate = #{record.ssfUdate,jdbcType=DATE},
+      </if>
+      <if test="record.ssfUtime != null">
+        ssf_utime = #{record.ssfUtime,jdbcType=TIME},
+      </if>
+      <if test="record.ssfUtimestamp != null">
+        ssf_utimestamp = #{record.ssfUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.versionNo != null">
+        version_no = #{record.versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="record.ssfUpdateUser != null">
+        ssf_update_user = #{record.ssfUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.ssfUpdateSysName != null">
+        ssf_update_sys_name = #{record.ssfUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ssfUpdateClassName != null">
+        ssf_update_class_name = #{record.ssfUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ssfUpdateMethodName != null">
+        ssf_update_method_name = #{record.ssfUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ssfUpdateCrudKbn != null">
+        ssf_update_crud_kbn = #{record.ssfUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="record.ssfSysRemarks != null">
+        ssf_sys_remarks = #{record.ssfSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update signage_shp_fil
+    set ssf_id = #{record.ssfId,jdbcType=BIGINT},
+      ssf_sig_id = #{record.ssfSigId,jdbcType=BIGINT},
+      ssf_ship_id = #{record.ssfShipId,jdbcType=BIGINT},
+      ssf_del_flg = #{record.ssfDelFlg,jdbcType=CHAR},
+      ssf_cdate = #{record.ssfCdate,jdbcType=DATE},
+      ssf_ctime = #{record.ssfCtime,jdbcType=TIME},
+      ssf_ctimestamp = #{record.ssfCtimestamp,jdbcType=TIMESTAMP},
+      ssf_udate = #{record.ssfUdate,jdbcType=DATE},
+      ssf_utime = #{record.ssfUtime,jdbcType=TIME},
+      ssf_utimestamp = #{record.ssfUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{record.versionNo,jdbcType=BIGINT},
+      ssf_update_user = #{record.ssfUpdateUser,jdbcType=BIGINT},
+      ssf_update_sys_name = #{record.ssfUpdateSysName,jdbcType=VARCHAR},
+      ssf_update_class_name = #{record.ssfUpdateClassName,jdbcType=VARCHAR},
+      ssf_update_method_name = #{record.ssfUpdateMethodName,jdbcType=VARCHAR},
+      ssf_update_crud_kbn = #{record.ssfUpdateCrudKbn,jdbcType=CHAR},
+      ssf_sys_remarks = #{record.ssfSysRemarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageShpFilCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from signage_shp_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectOneByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageShpFilCriteria" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from signage_shp_fil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>
