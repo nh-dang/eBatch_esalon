@@ -4816,96 +4816,6 @@ public class ChkoutHdrFilCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andCohPrePaidPriceIsNull() {
-            addCriterion("coh_pre_paid_price is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceIsNotNull() {
-            addCriterion("coh_pre_paid_price is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceEqualTo(Long value) {
-            addCriterion("coh_pre_paid_price =", value, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceEqualToColumn(ChkoutHdrFil.Column column) {
-            addCriterion(new StringBuilder("coh_pre_paid_price = ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceNotEqualTo(Long value) {
-            addCriterion("coh_pre_paid_price <>", value, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceNotEqualToColumn(ChkoutHdrFil.Column column) {
-            addCriterion(new StringBuilder("coh_pre_paid_price <> ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceGreaterThan(Long value) {
-            addCriterion("coh_pre_paid_price >", value, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceGreaterThanColumn(ChkoutHdrFil.Column column) {
-            addCriterion(new StringBuilder("coh_pre_paid_price > ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceGreaterThanOrEqualTo(Long value) {
-            addCriterion("coh_pre_paid_price >=", value, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceGreaterThanOrEqualToColumn(ChkoutHdrFil.Column column) {
-            addCriterion(new StringBuilder("coh_pre_paid_price >= ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceLessThan(Long value) {
-            addCriterion("coh_pre_paid_price <", value, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceLessThanColumn(ChkoutHdrFil.Column column) {
-            addCriterion(new StringBuilder("coh_pre_paid_price < ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceLessThanOrEqualTo(Long value) {
-            addCriterion("coh_pre_paid_price <=", value, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceLessThanOrEqualToColumn(ChkoutHdrFil.Column column) {
-            addCriterion(new StringBuilder("coh_pre_paid_price <= ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceIn(List<Long> values) {
-            addCriterion("coh_pre_paid_price in", values, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceNotIn(List<Long> values) {
-            addCriterion("coh_pre_paid_price not in", values, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceBetween(Long value1, Long value2) {
-            addCriterion("coh_pre_paid_price between", value1, value2, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andCohPrePaidPriceNotBetween(Long value1, Long value2) {
-            addCriterion("coh_pre_paid_price not between", value1, value2, "cohPrePaidPrice");
-            return (Criteria) this;
-        }
-
         public Criteria andCohSeatIdIsNull() {
             addCriterion("coh_seat_id is null");
             return (Criteria) this;
@@ -4993,6 +4903,96 @@ public class ChkoutHdrFilCriteria {
 
         public Criteria andCohSeatIdNotBetween(Long value1, Long value2) {
             addCriterion("coh_seat_id not between", value1, value2, "cohSeatId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceIsNull() {
+            addCriterion("coh_pre_paid_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceIsNotNull() {
+            addCriterion("coh_pre_paid_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceEqualTo(Long value) {
+            addCriterion("coh_pre_paid_price =", value, "cohPrePaidPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceEqualToColumn(ChkoutHdrFil.Column column) {
+            addCriterion(new StringBuilder("coh_pre_paid_price = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceNotEqualTo(Long value) {
+            addCriterion("coh_pre_paid_price <>", value, "cohPrePaidPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceNotEqualToColumn(ChkoutHdrFil.Column column) {
+            addCriterion(new StringBuilder("coh_pre_paid_price <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceGreaterThan(Long value) {
+            addCriterion("coh_pre_paid_price >", value, "cohPrePaidPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceGreaterThanColumn(ChkoutHdrFil.Column column) {
+            addCriterion(new StringBuilder("coh_pre_paid_price > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceGreaterThanOrEqualTo(Long value) {
+            addCriterion("coh_pre_paid_price >=", value, "cohPrePaidPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceGreaterThanOrEqualToColumn(ChkoutHdrFil.Column column) {
+            addCriterion(new StringBuilder("coh_pre_paid_price >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceLessThan(Long value) {
+            addCriterion("coh_pre_paid_price <", value, "cohPrePaidPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceLessThanColumn(ChkoutHdrFil.Column column) {
+            addCriterion(new StringBuilder("coh_pre_paid_price < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceLessThanOrEqualTo(Long value) {
+            addCriterion("coh_pre_paid_price <=", value, "cohPrePaidPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceLessThanOrEqualToColumn(ChkoutHdrFil.Column column) {
+            addCriterion(new StringBuilder("coh_pre_paid_price <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceIn(List<Long> values) {
+            addCriterion("coh_pre_paid_price in", values, "cohPrePaidPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceNotIn(List<Long> values) {
+            addCriterion("coh_pre_paid_price not in", values, "cohPrePaidPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceBetween(Long value1, Long value2) {
+            addCriterion("coh_pre_paid_price between", value1, value2, "cohPrePaidPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCohPrePaidPriceNotBetween(Long value1, Long value2) {
+            addCriterion("coh_pre_paid_price not between", value1, value2, "cohPrePaidPrice");
             return (Criteria) this;
         }
 

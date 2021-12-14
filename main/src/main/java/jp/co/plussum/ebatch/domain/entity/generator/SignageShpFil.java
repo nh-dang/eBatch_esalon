@@ -14,7 +14,7 @@ public class SignageShpFil implements Serializable {
 
     private Long ssfSigId;
 
-    private Long ssfShipId;
+    private Long ssfShpId;
 
     private String ssfDelFlg;
 
@@ -44,12 +44,14 @@ public class SignageShpFil implements Serializable {
 
     private String ssfSysRemarks;
 
+    private String ssfFileId;
+
     private static final long serialVersionUID = 1L;
 
     public enum Column {
         ssfId("ssf_id", "ssfId", "BIGINT", false),
         ssfSigId("ssf_sig_id", "ssfSigId", "BIGINT", false),
-        ssfShipId("ssf_ship_id", "ssfShipId", "BIGINT", false),
+        ssfShpId("ssf_shp_id", "ssfShpId", "BIGINT", false),
         ssfDelFlg("ssf_del_flg", "ssfDelFlg", "CHAR", false),
         ssfCdate("ssf_cdate", "ssfCdate", "DATE", false),
         ssfCtime("ssf_ctime", "ssfCtime", "TIME", false),
@@ -63,7 +65,8 @@ public class SignageShpFil implements Serializable {
         ssfUpdateClassName("ssf_update_class_name", "ssfUpdateClassName", "VARCHAR", false),
         ssfUpdateMethodName("ssf_update_method_name", "ssfUpdateMethodName", "VARCHAR", false),
         ssfUpdateCrudKbn("ssf_update_crud_kbn", "ssfUpdateCrudKbn", "CHAR", false),
-        ssfSysRemarks("ssf_sys_remarks", "ssfSysRemarks", "VARCHAR", false);
+        ssfSysRemarks("ssf_sys_remarks", "ssfSysRemarks", "VARCHAR", false),
+        ssfFileId("ssf_file_id", "ssfFileId", "VARCHAR", false);
 
         private static final String BEGINNING_DELIMITER = "\"";
 

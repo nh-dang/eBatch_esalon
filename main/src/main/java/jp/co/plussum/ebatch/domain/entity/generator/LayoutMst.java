@@ -44,6 +44,8 @@ public class LayoutMst implements Serializable {
 
     private String laySysRemarks;
 
+    private String laySvg;
+
     private static final long serialVersionUID = 1L;
 
     public enum Column {
@@ -63,7 +65,8 @@ public class LayoutMst implements Serializable {
         layUpdateClassName("lay_update_class_name", "layUpdateClassName", "VARCHAR", false),
         layUpdateMethodName("lay_update_method_name", "layUpdateMethodName", "VARCHAR", false),
         layUpdateCrudKbn("lay_update_crud_kbn", "layUpdateCrudKbn", "CHAR", false),
-        laySysRemarks("lay_sys_remarks", "laySysRemarks", "VARCHAR", false);
+        laySysRemarks("lay_sys_remarks", "laySysRemarks", "VARCHAR", false),
+        laySvg("lay_svg", "laySvg", "VARCHAR", false);
 
         private static final String BEGINNING_DELIMITER = "\"";
 

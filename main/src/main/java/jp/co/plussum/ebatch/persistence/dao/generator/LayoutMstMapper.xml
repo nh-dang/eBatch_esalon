@@ -19,6 +19,7 @@
     <result column="lay_update_method_name" jdbcType="VARCHAR" property="layUpdateMethodName" />
     <result column="lay_update_crud_kbn" jdbcType="CHAR" property="layUpdateCrudKbn" />
     <result column="lay_sys_remarks" jdbcType="VARCHAR" property="laySysRemarks" />
+    <result column="lay_svg" jdbcType="VARCHAR" property="laySvg" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -81,7 +82,8 @@
   <sql id="Base_Column_List">
     lay_id, lay_shp_id, lay_content, lay_del_flg, lay_cdate, lay_ctime, lay_ctimestamp, 
     lay_udate, lay_utime, lay_utimestamp, version_no, lay_update_user, lay_update_sys_name, 
-    lay_update_class_name, lay_update_method_name, lay_update_crud_kbn, lay_sys_remarks
+    lay_update_class_name, lay_update_method_name, lay_update_crud_kbn, lay_sys_remarks, 
+    lay_svg
   </sql>
   <select id="selectByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.LayoutMstCriteria" resultMap="BaseResultMap">
     select
@@ -119,13 +121,15 @@
       lay_ctimestamp, lay_udate, lay_utime, 
       lay_utimestamp, version_no, lay_update_user, 
       lay_update_sys_name, lay_update_class_name, lay_update_method_name, 
-      lay_update_crud_kbn, lay_sys_remarks)
+      lay_update_crud_kbn, lay_sys_remarks, lay_svg
+      )
     values (#{layId,jdbcType=BIGINT}, #{layShpId,jdbcType=BIGINT}, #{layContent,jdbcType=VARCHAR}, 
       #{layDelFlg,jdbcType=CHAR}, #{layCdate,jdbcType=DATE}, #{layCtime,jdbcType=TIME}, 
       #{layCtimestamp,jdbcType=TIMESTAMP}, #{layUdate,jdbcType=DATE}, #{layUtime,jdbcType=TIME}, 
       #{layUtimestamp,jdbcType=TIMESTAMP}, #{versionNo,jdbcType=BIGINT}, #{layUpdateUser,jdbcType=BIGINT}, 
       #{layUpdateSysName,jdbcType=VARCHAR}, #{layUpdateClassName,jdbcType=VARCHAR}, #{layUpdateMethodName,jdbcType=VARCHAR}, 
-      #{layUpdateCrudKbn,jdbcType=CHAR}, #{laySysRemarks,jdbcType=VARCHAR})
+      #{layUpdateCrudKbn,jdbcType=CHAR}, #{laySysRemarks,jdbcType=VARCHAR}, #{laySvg,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.LayoutMst">
     insert into layout_mst
@@ -181,6 +185,9 @@
       <if test="laySysRemarks != null">
         lay_sys_remarks,
       </if>
+      <if test="laySvg != null">
+        lay_svg,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="layId != null">
@@ -233,6 +240,9 @@
       </if>
       <if test="laySysRemarks != null">
         #{laySysRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="laySvg != null">
+        #{laySvg,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -296,6 +306,9 @@
       <if test="record.laySysRemarks != null">
         lay_sys_remarks = #{record.laySysRemarks,jdbcType=VARCHAR},
       </if>
+      <if test="record.laySvg != null">
+        lay_svg = #{record.laySvg,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -319,7 +332,8 @@
       lay_update_class_name = #{record.layUpdateClassName,jdbcType=VARCHAR},
       lay_update_method_name = #{record.layUpdateMethodName,jdbcType=VARCHAR},
       lay_update_crud_kbn = #{record.layUpdateCrudKbn,jdbcType=CHAR},
-      lay_sys_remarks = #{record.laySysRemarks,jdbcType=VARCHAR}
+      lay_sys_remarks = #{record.laySysRemarks,jdbcType=VARCHAR},
+      lay_svg = #{record.laySvg,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -375,6 +389,9 @@
       <if test="laySysRemarks != null">
         lay_sys_remarks = #{laySysRemarks,jdbcType=VARCHAR},
       </if>
+      <if test="laySvg != null">
+        lay_svg = #{laySvg,jdbcType=VARCHAR},
+      </if>
     </set>
     where lay_id = #{layId,jdbcType=BIGINT}
   </update>
@@ -395,7 +412,8 @@
       lay_update_class_name = #{layUpdateClassName,jdbcType=VARCHAR},
       lay_update_method_name = #{layUpdateMethodName,jdbcType=VARCHAR},
       lay_update_crud_kbn = #{layUpdateCrudKbn,jdbcType=CHAR},
-      lay_sys_remarks = #{laySysRemarks,jdbcType=VARCHAR}
+      lay_sys_remarks = #{laySysRemarks,jdbcType=VARCHAR},
+      lay_svg = #{laySvg,jdbcType=VARCHAR}
     where lay_id = #{layId,jdbcType=BIGINT}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.LayoutMstCriteria" resultMap="BaseResultMap">

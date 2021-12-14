@@ -91,6 +91,12 @@
             <version>v3-rev110-1.23.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-codec -->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
 
     </dependencies>
 

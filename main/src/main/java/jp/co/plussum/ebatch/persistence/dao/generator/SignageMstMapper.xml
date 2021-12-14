@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.plussum.ebatch.persistence.dao.generator.SignageMstMapper">
   <resultMap id="BaseResultMap" type="jp.co.plussum.ebatch.domain.entity.generator.SignageMst">
-    <result column="sig_id" jdbcType="BIGINT" property="sigId" />
-    <result column="sig_image_path" jdbcType="CHAR" property="sigImagePath" />
+    <id column="sig_id" jdbcType="BIGINT" property="sigId" />
+    <result column="sig_image_path" jdbcType="VARCHAR" property="sigImagePath" />
     <result column="sig_del_flg" jdbcType="CHAR" property="sigDelFlg" />
     <result column="sig_cdate" jdbcType="DATE" property="sigCdate" />
     <result column="sig_ctime" jdbcType="TIME" property="sigCtime" />
@@ -96,6 +96,16 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from signage_mst
+    where sig_id = #{sigId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from signage_mst
+    where sig_id = #{sigId,jdbcType=BIGINT}
+  </delete>
   <delete id="deleteByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMstCriteria">
     delete from signage_mst
     <if test="_parameter != null">
@@ -109,7 +119,7 @@
       version_no, sig_update_user, sig_update_sys_name, 
       sig_update_class_name, sig_update_method_name, 
       sig_update_crud_kbn, sig_sys_remarks)
-    values (#{sigId,jdbcType=BIGINT}, #{sigImagePath,jdbcType=CHAR}, #{sigDelFlg,jdbcType=CHAR}, 
+    values (#{sigId,jdbcType=BIGINT}, #{sigImagePath,jdbcType=VARCHAR}, #{sigDelFlg,jdbcType=CHAR}, 
       #{sigCdate,jdbcType=DATE}, #{sigCtime,jdbcType=TIME}, #{sigCtimestamp,jdbcType=TIMESTAMP}, 
       #{sigUdate,jdbcType=DATE}, #{sigUtime,jdbcType=TIME}, #{sigUtimestamp,jdbcType=TIMESTAMP}, 
       #{versionNo,jdbcType=BIGINT}, #{sigUpdateUser,jdbcType=BIGINT}, #{sigUpdateSysName,jdbcType=VARCHAR}, 
@@ -173,7 +183,7 @@
         #{sigId,jdbcType=BIGINT},
       </if>
       <if test="sigImagePath != null">
-        #{sigImagePath,jdbcType=CHAR},
+        #{sigImagePath,jdbcType=VARCHAR},
       </if>
       <if test="sigDelFlg != null">
         #{sigDelFlg,jdbcType=CHAR},
@@ -232,7 +242,7 @@
         sig_id = #{record.sigId,jdbcType=BIGINT},
       </if>
       <if test="record.sigImagePath != null">
-        sig_image_path = #{record.sigImagePath,jdbcType=CHAR},
+        sig_image_path = #{record.sigImagePath,jdbcType=VARCHAR},
       </if>
       <if test="record.sigDelFlg != null">
         sig_del_flg = #{record.sigDelFlg,jdbcType=CHAR},
@@ -284,7 +294,7 @@
   <update id="updateByExample" parameterType="map">
     update signage_mst
     set sig_id = #{record.sigId,jdbcType=BIGINT},
-      sig_image_path = #{record.sigImagePath,jdbcType=CHAR},
+      sig_image_path = #{record.sigImagePath,jdbcType=VARCHAR},
       sig_del_flg = #{record.sigDelFlg,jdbcType=CHAR},
       sig_cdate = #{record.sigCdate,jdbcType=DATE},
       sig_ctime = #{record.sigCtime,jdbcType=TIME},
@@ -302,6 +312,76 @@
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMst">
+    update signage_mst
+    <set>
+      <if test="sigImagePath != null">
+        sig_image_path = #{sigImagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="sigDelFlg != null">
+        sig_del_flg = #{sigDelFlg,jdbcType=CHAR},
+      </if>
+      <if test="sigCdate != null">
+        sig_cdate = #{sigCdate,jdbcType=DATE},
+      </if>
+      <if test="sigCtime != null">
+        sig_ctime = #{sigCtime,jdbcType=TIME},
+      </if>
+      <if test="sigCtimestamp != null">
+        sig_ctimestamp = #{sigCtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sigUdate != null">
+        sig_udate = #{sigUdate,jdbcType=DATE},
+      </if>
+      <if test="sigUtime != null">
+        sig_utime = #{sigUtime,jdbcType=TIME},
+      </if>
+      <if test="sigUtimestamp != null">
+        sig_utimestamp = #{sigUtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versionNo != null">
+        version_no = #{versionNo,jdbcType=BIGINT},
+      </if>
+      <if test="sigUpdateUser != null">
+        sig_update_user = #{sigUpdateUser,jdbcType=BIGINT},
+      </if>
+      <if test="sigUpdateSysName != null">
+        sig_update_sys_name = #{sigUpdateSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="sigUpdateClassName != null">
+        sig_update_class_name = #{sigUpdateClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="sigUpdateMethodName != null">
+        sig_update_method_name = #{sigUpdateMethodName,jdbcType=VARCHAR},
+      </if>
+      <if test="sigUpdateCrudKbn != null">
+        sig_update_crud_kbn = #{sigUpdateCrudKbn,jdbcType=CHAR},
+      </if>
+      <if test="sigSysRemarks != null">
+        sig_sys_remarks = #{sigSysRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sig_id = #{sigId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMst">
+    update signage_mst
+    set sig_image_path = #{sigImagePath,jdbcType=VARCHAR},
+      sig_del_flg = #{sigDelFlg,jdbcType=CHAR},
+      sig_cdate = #{sigCdate,jdbcType=DATE},
+      sig_ctime = #{sigCtime,jdbcType=TIME},
+      sig_ctimestamp = #{sigCtimestamp,jdbcType=TIMESTAMP},
+      sig_udate = #{sigUdate,jdbcType=DATE},
+      sig_utime = #{sigUtime,jdbcType=TIME},
+      sig_utimestamp = #{sigUtimestamp,jdbcType=TIMESTAMP},
+      version_no = #{versionNo,jdbcType=BIGINT},
+      sig_update_user = #{sigUpdateUser,jdbcType=BIGINT},
+      sig_update_sys_name = #{sigUpdateSysName,jdbcType=VARCHAR},
+      sig_update_class_name = #{sigUpdateClassName,jdbcType=VARCHAR},
+      sig_update_method_name = #{sigUpdateMethodName,jdbcType=VARCHAR},
+      sig_update_crud_kbn = #{sigUpdateCrudKbn,jdbcType=CHAR},
+      sig_sys_remarks = #{sigSysRemarks,jdbcType=VARCHAR}
+    where sig_id = #{sigId,jdbcType=BIGINT}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.SignageMstCriteria" resultMap="BaseResultMap">
     select

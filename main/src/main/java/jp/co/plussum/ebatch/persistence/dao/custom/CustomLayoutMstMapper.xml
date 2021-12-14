@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plussum.ebatch.persistence.dao.custom.CustomLayoutMstMapper">
+
+    <resultMap id="layoutMstListResultMap" type="jp.co.plussum.ebatch.dto.job0001.FindLayoutPrmRst">
+        <result column="lay_svg" jdbcType="VARCHAR" property="laySvg"/>
+        <result column="ssf_shp_id" jdbcType="VARCHAR" property="ssfShpId"/>
+        <result column="sig_image_path" jdbcType="VARCHAR" property="sigImagePath"/>
+        <result column="ssf_id" jdbcType="BIGINT" property="ssfId"/>
+        <result column="ssf_file_id" jdbcType="VARCHAR" property="ssfFileId"/>
+    </resultMap>
+
+    <select id="findLayoutMst" resultMap="layoutMstListResultMap"
+            parameterType="jp.co.plussum.ebatch.dto.job0001.FindLayoutPrm">
+        SELECT
+            lm.lay_svg ,
+            ssf.ssf_shp_id ,
+            ssf.ssf_file_id ,
+            ssf.ssf_id,
+            sm.sig_image_path
+        FROM
+            layout_mst lm
+            join signage_shp_fil ssf on ssf.ssf_shp_id = lm.lay_shp_id
+            join signage_mst sm on sm.sig_id = ssf.ssf_id
+        WHERE
+            1 = 1
+            <if test="layoutShpIdList != null and layoutShpIdList.size() > 0">
+                AND lm.lay_shp_id in
+                <foreach item="item" index="index" collection="layoutShpIdList"
+                         open="(" separator="," close=")">
+                    #{item,jdbcType=VARCHAR}
+                </foreach>
+            </if>
+    </select>
+
+</mapper>

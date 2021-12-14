@@ -46,7 +46,7 @@ public class SignageMst implements Serializable {
 
     public enum Column {
         sigId("sig_id", "sigId", "BIGINT", false),
-        sigImagePath("sig_image_path", "sigImagePath", "CHAR", false),
+        sigImagePath("sig_image_path", "sigImagePath", "VARCHAR", false),
         sigDelFlg("sig_del_flg", "sigDelFlg", "CHAR", false),
         sigCdate("sig_cdate", "sigCdate", "DATE", false),
         sigCtime("sig_ctime", "sigCtime", "TIME", false),

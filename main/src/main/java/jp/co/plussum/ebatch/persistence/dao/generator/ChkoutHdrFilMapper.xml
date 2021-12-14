@@ -51,8 +51,8 @@
     <result column="coh_rsv_ml_addr" jdbcType="VARCHAR" property="cohRsvMlAddr" />
     <result column="coh_rsv_qst_ans" jdbcType="VARCHAR" property="cohRsvQstAns" />
     <result column="coh_rsv_req_cns" jdbcType="VARCHAR" property="cohRsvReqCns" />
-    <result column="coh_pre_paid_price" jdbcType="NUMERIC" property="cohPrePaidPrice" />
     <result column="coh_seat_id" jdbcType="BIGINT" property="cohSeatId" />
+    <result column="coh_pre_paid_price" jdbcType="BIGINT" property="cohPrePaidPrice" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -121,7 +121,7 @@
     coh_sys_remarks, coh_bef_id, coh_reserv_str_time, coh_reserv_end_time, coh_raiten_kaisu, 
     coh_raiten_kankaku, coh_receipt_remarks, coh_kaijyo_remarks, coh_expt_finish_time, 
     coh_visit_mot, coh_rsv_id, coh_rsv_rte_sbt, coh_rsv_tel_01, coh_rsv_tel_02, coh_rsv_tel_03, 
-    coh_rsv_ml_addr, coh_rsv_qst_ans, coh_rsv_req_cns, coh_pre_paid_price, coh_seat_id
+    coh_rsv_ml_addr, coh_rsv_qst_ans, coh_rsv_req_cns, coh_seat_id, coh_pre_paid_price
   </sql>
   <select id="selectByExample" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFilCriteria" resultMap="BaseResultMap">
     select
@@ -170,7 +170,7 @@
       coh_expt_finish_time, coh_visit_mot, coh_rsv_id, 
       coh_rsv_rte_sbt, coh_rsv_tel_01, coh_rsv_tel_02, 
       coh_rsv_tel_03, coh_rsv_ml_addr, coh_rsv_qst_ans, 
-      coh_rsv_req_cns, coh_pre_paid_price, coh_seat_id
+      coh_rsv_req_cns, coh_seat_id, coh_pre_paid_price
       )
     values (#{cohId,jdbcType=BIGINT}, #{cohStsKbn,jdbcType=CHAR}, #{cohDate,jdbcType=DATE}, 
       #{cohEntTime,jdbcType=TIME}, #{cohWaitTime,jdbcType=NUMERIC}, #{cohStrTime,jdbcType=TIME}, 
@@ -188,7 +188,7 @@
       #{cohExptFinishTime,jdbcType=TIME}, #{cohVisitMot,jdbcType=CHAR}, #{cohRsvId,jdbcType=BIGINT}, 
       #{cohRsvRteSbt,jdbcType=CHAR}, #{cohRsvTel01,jdbcType=VARCHAR}, #{cohRsvTel02,jdbcType=VARCHAR}, 
       #{cohRsvTel03,jdbcType=VARCHAR}, #{cohRsvMlAddr,jdbcType=VARCHAR}, #{cohRsvQstAns,jdbcType=VARCHAR}, 
-      #{cohRsvReqCns,jdbcType=VARCHAR}, #{cohPrePaidPrice,jdbcType=NUMERIC}, #{cohSeatId,jdbcType=BIGINT}
+      #{cohRsvReqCns,jdbcType=VARCHAR}, #{cohSeatId,jdbcType=BIGINT}, #{cohPrePaidPrice,jdbcType=BIGINT}
       )
   </insert>
   <insert id="insertSelective" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFil">
@@ -341,11 +341,11 @@
       <if test="cohRsvReqCns != null">
         coh_rsv_req_cns,
       </if>
-      <if test="cohPrePaidPrice != null">
-        coh_pre_paid_price,
-      </if>
       <if test="cohSeatId != null">
         coh_seat_id,
+      </if>
+      <if test="cohPrePaidPrice != null">
+        coh_pre_paid_price,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -496,11 +496,11 @@
       <if test="cohRsvReqCns != null">
         #{cohRsvReqCns,jdbcType=VARCHAR},
       </if>
-      <if test="cohPrePaidPrice != null">
-        #{cohPrePaidPrice,jdbcType=NUMERIC},
-      </if>
       <if test="cohSeatId != null">
         #{cohSeatId,jdbcType=BIGINT},
+      </if>
+      <if test="cohPrePaidPrice != null">
+        #{cohPrePaidPrice,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -660,11 +660,11 @@
       <if test="record.cohRsvReqCns != null">
         coh_rsv_req_cns = #{record.cohRsvReqCns,jdbcType=VARCHAR},
       </if>
-      <if test="record.cohPrePaidPrice != null">
-        coh_pre_paid_price = #{record.cohPrePaidPrice,jdbcType=NUMERIC},
-      </if>
       <if test="record.cohSeatId != null">
         coh_seat_id = #{record.cohSeatId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cohPrePaidPrice != null">
+        coh_pre_paid_price = #{record.cohPrePaidPrice,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -722,8 +722,8 @@
       coh_rsv_ml_addr = #{record.cohRsvMlAddr,jdbcType=VARCHAR},
       coh_rsv_qst_ans = #{record.cohRsvQstAns,jdbcType=VARCHAR},
       coh_rsv_req_cns = #{record.cohRsvReqCns,jdbcType=VARCHAR},
-      coh_pre_paid_price = #{record.cohPrePaidPrice,jdbcType=NUMERIC},
-      coh_seat_id = #{record.cohSeatId,jdbcType=BIGINT}
+      coh_seat_id = #{record.cohSeatId,jdbcType=BIGINT},
+      coh_pre_paid_price = #{record.cohPrePaidPrice,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -875,11 +875,11 @@
       <if test="cohRsvReqCns != null">
         coh_rsv_req_cns = #{cohRsvReqCns,jdbcType=VARCHAR},
       </if>
-      <if test="cohPrePaidPrice != null">
-        coh_pre_paid_price = #{cohPrePaidPrice,jdbcType=NUMERIC},
-      </if>
       <if test="cohSeatId != null">
         coh_seat_id = #{cohSeatId,jdbcType=BIGINT},
+      </if>
+      <if test="cohPrePaidPrice != null">
+        coh_pre_paid_price = #{cohPrePaidPrice,jdbcType=BIGINT},
       </if>
     </set>
     where coh_id = #{cohId,jdbcType=BIGINT}
@@ -934,8 +934,8 @@
       coh_rsv_ml_addr = #{cohRsvMlAddr,jdbcType=VARCHAR},
       coh_rsv_qst_ans = #{cohRsvQstAns,jdbcType=VARCHAR},
       coh_rsv_req_cns = #{cohRsvReqCns,jdbcType=VARCHAR},
-      coh_pre_paid_price = #{cohPrePaidPrice,jdbcType=NUMERIC},
-      coh_seat_id = #{cohSeatId,jdbcType=BIGINT}
+      coh_seat_id = #{cohSeatId,jdbcType=BIGINT},
+      coh_pre_paid_price = #{cohPrePaidPrice,jdbcType=BIGINT}
     where coh_id = #{cohId,jdbcType=BIGINT}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="jp.co.plussum.ebatch.domain.entity.generator.ChkoutHdrFilCriteria" resultMap="BaseResultMap">

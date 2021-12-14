@@ -108,9 +108,9 @@ public class ChkoutHdrFil implements Serializable {
 
     private String cohRsvReqCns;
 
-    private Long cohPrePaidPrice;
-
     private Long cohSeatId;
+
+    private Long cohPrePaidPrice;
 
     private static final long serialVersionUID = 1L;
 
@@ -164,8 +164,8 @@ public class ChkoutHdrFil implements Serializable {
         cohRsvMlAddr("coh_rsv_ml_addr", "cohRsvMlAddr", "VARCHAR", false),
         cohRsvQstAns("coh_rsv_qst_ans", "cohRsvQstAns", "VARCHAR", false),
         cohRsvReqCns("coh_rsv_req_cns", "cohRsvReqCns", "VARCHAR", false),
-        cohPrePaidPrice("coh_pre_paid_price", "cohPrePaidPrice", "NUMERIC", false),
-        cohSeatId("coh_seat_id", "cohSeatId", "BIGINT", false);
+        cohSeatId("coh_seat_id", "cohSeatId", "BIGINT", false),
+        cohPrePaidPrice("coh_pre_paid_price", "cohPrePaidPrice", "BIGINT", false);
 
         private static final String BEGINNING_DELIMITER = "\"";
 

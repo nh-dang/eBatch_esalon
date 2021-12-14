@@ -13,6 +13,8 @@ public interface SignageMstMapper {
 
     int deleteByExample(SignageMstCriteria example);
 
+    int deleteByPrimaryKey(Long sigId);
+
     int insert(SignageMst record);
 
     int insertSelective(SignageMst record);
@@ -23,7 +25,13 @@ public interface SignageMstMapper {
 
     List<SignageMst> selectByExample(SignageMstCriteria example);
 
+    SignageMst selectByPrimaryKey(Long sigId);
+
     int updateByExampleSelective(@Param("record") SignageMst record, @Param("example") SignageMstCriteria example);
 
     int updateByExample(@Param("record") SignageMst record, @Param("example") SignageMstCriteria example);
+
+    int updateByPrimaryKeySelective(SignageMst record);
+
+    int updateByPrimaryKey(SignageMst record);
 }

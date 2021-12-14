@@ -376,93 +376,93 @@ public class SignageShpFilCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdIsNull() {
-            addCriterion("ssf_ship_id is null");
+        public Criteria andSsfShpIdIsNull() {
+            addCriterion("ssf_shp_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdIsNotNull() {
-            addCriterion("ssf_ship_id is not null");
+        public Criteria andSsfShpIdIsNotNull() {
+            addCriterion("ssf_shp_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdEqualTo(Long value) {
-            addCriterion("ssf_ship_id =", value, "ssfShipId");
+        public Criteria andSsfShpIdEqualTo(Long value) {
+            addCriterion("ssf_shp_id =", value, "ssfShpId");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdEqualToColumn(SignageShpFil.Column column) {
-            addCriterion(new StringBuilder("ssf_ship_id = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSsfShpIdEqualToColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_shp_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdNotEqualTo(Long value) {
-            addCriterion("ssf_ship_id <>", value, "ssfShipId");
+        public Criteria andSsfShpIdNotEqualTo(Long value) {
+            addCriterion("ssf_shp_id <>", value, "ssfShpId");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdNotEqualToColumn(SignageShpFil.Column column) {
-            addCriterion(new StringBuilder("ssf_ship_id <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSsfShpIdNotEqualToColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_shp_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdGreaterThan(Long value) {
-            addCriterion("ssf_ship_id >", value, "ssfShipId");
+        public Criteria andSsfShpIdGreaterThan(Long value) {
+            addCriterion("ssf_shp_id >", value, "ssfShpId");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdGreaterThanColumn(SignageShpFil.Column column) {
-            addCriterion(new StringBuilder("ssf_ship_id > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSsfShpIdGreaterThanColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_shp_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("ssf_ship_id >=", value, "ssfShipId");
+        public Criteria andSsfShpIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("ssf_shp_id >=", value, "ssfShpId");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdGreaterThanOrEqualToColumn(SignageShpFil.Column column) {
-            addCriterion(new StringBuilder("ssf_ship_id >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSsfShpIdGreaterThanOrEqualToColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_shp_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdLessThan(Long value) {
-            addCriterion("ssf_ship_id <", value, "ssfShipId");
+        public Criteria andSsfShpIdLessThan(Long value) {
+            addCriterion("ssf_shp_id <", value, "ssfShpId");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdLessThanColumn(SignageShpFil.Column column) {
-            addCriterion(new StringBuilder("ssf_ship_id < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSsfShpIdLessThanColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_shp_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdLessThanOrEqualTo(Long value) {
-            addCriterion("ssf_ship_id <=", value, "ssfShipId");
+        public Criteria andSsfShpIdLessThanOrEqualTo(Long value) {
+            addCriterion("ssf_shp_id <=", value, "ssfShpId");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdLessThanOrEqualToColumn(SignageShpFil.Column column) {
-            addCriterion(new StringBuilder("ssf_ship_id <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSsfShpIdLessThanOrEqualToColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_shp_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdIn(List<Long> values) {
-            addCriterion("ssf_ship_id in", values, "ssfShipId");
+        public Criteria andSsfShpIdIn(List<Long> values) {
+            addCriterion("ssf_shp_id in", values, "ssfShpId");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdNotIn(List<Long> values) {
-            addCriterion("ssf_ship_id not in", values, "ssfShipId");
+        public Criteria andSsfShpIdNotIn(List<Long> values) {
+            addCriterion("ssf_shp_id not in", values, "ssfShpId");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdBetween(Long value1, Long value2) {
-            addCriterion("ssf_ship_id between", value1, value2, "ssfShipId");
+        public Criteria andSsfShpIdBetween(Long value1, Long value2) {
+            addCriterion("ssf_shp_id between", value1, value2, "ssfShpId");
             return (Criteria) this;
         }
 
-        public Criteria andSsfShipIdNotBetween(Long value1, Long value2) {
-            addCriterion("ssf_ship_id not between", value1, value2, "ssfShipId");
+        public Criteria andSsfShpIdNotBetween(Long value1, Long value2) {
+            addCriterion("ssf_shp_id not between", value1, value2, "ssfShpId");
             return (Criteria) this;
         }
 
@@ -1786,6 +1786,106 @@ public class SignageShpFilCriteria {
             return (Criteria) this;
         }
 
+        public Criteria andSsfFileIdIsNull() {
+            addCriterion("ssf_file_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdIsNotNull() {
+            addCriterion("ssf_file_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdEqualTo(String value) {
+            addCriterion("ssf_file_id =", value, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdEqualToColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_file_id = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdNotEqualTo(String value) {
+            addCriterion("ssf_file_id <>", value, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdNotEqualToColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_file_id <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdGreaterThan(String value) {
+            addCriterion("ssf_file_id >", value, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdGreaterThanColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_file_id > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdGreaterThanOrEqualTo(String value) {
+            addCriterion("ssf_file_id >=", value, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdGreaterThanOrEqualToColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_file_id >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdLessThan(String value) {
+            addCriterion("ssf_file_id <", value, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdLessThanColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_file_id < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdLessThanOrEqualTo(String value) {
+            addCriterion("ssf_file_id <=", value, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdLessThanOrEqualToColumn(SignageShpFil.Column column) {
+            addCriterion(new StringBuilder("ssf_file_id <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdLike(String value) {
+            addCriterion("ssf_file_id like", value, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdNotLike(String value) {
+            addCriterion("ssf_file_id not like", value, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdIn(List<String> values) {
+            addCriterion("ssf_file_id in", values, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdNotIn(List<String> values) {
+            addCriterion("ssf_file_id not in", values, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdBetween(String value1, String value2) {
+            addCriterion("ssf_file_id between", value1, value2, "ssfFileId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdNotBetween(String value1, String value2) {
+            addCriterion("ssf_file_id not between", value1, value2, "ssfFileId");
+            return (Criteria) this;
+        }
+
         public Criteria andSsfDelFlgLikeInsensitive(String value) {
             addCriterion("upper(ssf_del_flg) like", value.toUpperCase(), "ssfDelFlg");
             return (Criteria) this;
@@ -1813,6 +1913,11 @@ public class SignageShpFilCriteria {
 
         public Criteria andSsfSysRemarksLikeInsensitive(String value) {
             addCriterion("upper(ssf_sys_remarks) like", value.toUpperCase(), "ssfSysRemarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsfFileIdLikeInsensitive(String value) {
+            addCriterion("upper(ssf_file_id) like", value.toUpperCase(), "ssfFileId");
             return (Criteria) this;
         }
 

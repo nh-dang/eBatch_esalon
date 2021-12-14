@@ -1796,6 +1796,106 @@ public class LayoutMstCriteria {
             return (Criteria) this;
         }
 
+        public Criteria andLaySvgIsNull() {
+            addCriterion("lay_svg is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgIsNotNull() {
+            addCriterion("lay_svg is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgEqualTo(String value) {
+            addCriterion("lay_svg =", value, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgEqualToColumn(LayoutMst.Column column) {
+            addCriterion(new StringBuilder("lay_svg = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgNotEqualTo(String value) {
+            addCriterion("lay_svg <>", value, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgNotEqualToColumn(LayoutMst.Column column) {
+            addCriterion(new StringBuilder("lay_svg <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgGreaterThan(String value) {
+            addCriterion("lay_svg >", value, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgGreaterThanColumn(LayoutMst.Column column) {
+            addCriterion(new StringBuilder("lay_svg > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgGreaterThanOrEqualTo(String value) {
+            addCriterion("lay_svg >=", value, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgGreaterThanOrEqualToColumn(LayoutMst.Column column) {
+            addCriterion(new StringBuilder("lay_svg >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgLessThan(String value) {
+            addCriterion("lay_svg <", value, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgLessThanColumn(LayoutMst.Column column) {
+            addCriterion(new StringBuilder("lay_svg < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgLessThanOrEqualTo(String value) {
+            addCriterion("lay_svg <=", value, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgLessThanOrEqualToColumn(LayoutMst.Column column) {
+            addCriterion(new StringBuilder("lay_svg <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgLike(String value) {
+            addCriterion("lay_svg like", value, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgNotLike(String value) {
+            addCriterion("lay_svg not like", value, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgIn(List<String> values) {
+            addCriterion("lay_svg in", values, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgNotIn(List<String> values) {
+            addCriterion("lay_svg not in", values, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgBetween(String value1, String value2) {
+            addCriterion("lay_svg between", value1, value2, "laySvg");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgNotBetween(String value1, String value2) {
+            addCriterion("lay_svg not between", value1, value2, "laySvg");
+            return (Criteria) this;
+        }
+
         public Criteria andLayContentLikeInsensitive(String value) {
             addCriterion("upper(lay_content) like", value.toUpperCase(), "layContent");
             return (Criteria) this;
@@ -1828,6 +1928,11 @@ public class LayoutMstCriteria {
 
         public Criteria andLaySysRemarksLikeInsensitive(String value) {
             addCriterion("upper(lay_sys_remarks) like", value.toUpperCase(), "laySysRemarks");
+            return (Criteria) this;
+        }
+
+        public Criteria andLaySvgLikeInsensitive(String value) {
+            addCriterion("upper(lay_svg) like", value.toUpperCase(), "laySvg");
             return (Criteria) this;
         }
 
