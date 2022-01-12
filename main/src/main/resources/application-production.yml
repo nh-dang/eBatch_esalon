@@ -18,3 +18,10 @@ spring:
     hikari:
       data-source-properties:
         useUnicode: true
+  #*******************************************************************************
+  #                           Google Service
+  #******************************************************************************/
+service:
+  google:
+    drive-api:
+      credentials: classpath:google_credentials/production/credentials.json

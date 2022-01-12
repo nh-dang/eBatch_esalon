@@ -14,7 +14,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/salondb?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: postgres
-    password: postgresql
+    password: postgres
     hikari:
       data-source-properties:
         useUnicode: true
@@ -25,4 +25,4 @@ spring:
 service:
   google:
     drive-api:
-      credentials: classpath:google_credentials/local/gdriverdemo-334116-bb495c8c218f.json
+      credentials: classpath:google_credentials/local/credentials.json
